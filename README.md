@@ -34,7 +34,8 @@ The genesis of Schoolbox arose from a simple thought: how can technology be harn
 
 Schoolbox has been built using a selection of powerful tools and technologies:
 
-![Java](https://img.shields.io/badge/Java-%3E%3D%2011-blue) ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-%3E%3D%202.5.0-brightgreen) ![Thymeleaf](https://img.shields.io/badge/Thymeleaf-%3E%3D%203.0.0-yellowgreen) ![jQuery](https://img.shields.io/badge/jQuery-%3E%3D%203.6.0-blue) ![Postgres](https://img.shields.io/badge/Postgres-%3E%3D%2013.0-blue)
+![Java](https://img.shields.io/badge/Java-%3E%3D%2011-blue) ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-%3E%3D%202.5.0-brightgreen) ![Thymeleaf](https://img.shields.io/badge/Thymeleaf-%3E%3D%203.0.0-yellowgreen) ![jQuery](https://img.shields.io/badge/jQuery-%3E%3D%203.6.0-blue) ![Postgres](https://img.shields.io/badge/Postgres-%3E%3D%2013.0-blue) ![Bootstrap](https://img.shields.io/badge/Bootstrap-%3E%3D%203.5.0-purple)
+
 
 These tools collectively contribute to the functionality, reliability, and user experience of Schoolbox.
 
