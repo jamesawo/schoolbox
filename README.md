@@ -1,7 +1,7 @@
 
 # SchoolBox
 
-> Empowering Local Educational Institutions with Efficient Management Tools
+> Empowering Educational Institutions with Efficient Management Tools
 
 
 ## Project Overview
