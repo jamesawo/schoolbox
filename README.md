@@ -76,12 +76,12 @@ Schoolbox is developed and maintained by **James Aworo**.
 
 For questions, feedback, or collaborations, feel free to reach out via email at [james.aworo@outlook.com](mailto:james.aworo@outlook.com).
 
-Connect with me on [LinkedIn](https://www.linkedin.com/#) and follow me on [GitHub](https://github.com/jamesawo) to stay updated on my projects.
+Connect with me on [LinkedIn](https://www.linkedin.com/#) and follow me on [GitHub](https://github.com/jamesawo) to stay updated on my projects [more projects...](https://jamesaworo.com).
 
 
 ## License
 
-Schoolbox is distributed under the terms of the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html).
+Schoolbox is distributed under the MIT License.
 
 
 

@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT -Dspring.datasource.url=$H2_URL -Dspring.datasource.username=$H2_US -Dspring.datasource.password=$H2_PW -Dapp.user.default.password=$APP_PASSWORD -Dapp.user.default.username=$APP_USERNAME -Dapp.user.default.email=$APP_EMAIL  -jar target/*.jar
