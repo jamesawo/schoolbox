@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="footer-w" th:fragment="body_footer_bottom">
+    <div class="fade3"></div>
+    <div class="os-container">
+        <div class="footer-i">
+            <div class="row container">
+                <div class="col-sm-7 col-lg-4 b-r padded">
+                    <div class="logo-element"></div>
+                    <h3 class="heading-big" th:text="${globalSettingParam.get('CollegeName')}">College Name</h3>
+                    <p th:text="${globalSettingParam.get('SchoolSlogan')}">KNOWLEDGE TRUTH SERVICE</p>
+                     <h6 class="heading-small">Social Links</h6>
+                    <ul class="social-links">
+                        <li><a href="www.facebook.com"><i class="os-icon os-icon-facebook"></i></a></li>
+                        <li><a href="www.twitter.com"><i class="os-icon os-icon-twitter"></i></a></li>
+                        <li><a href="www.instagram.com"><i class="os-icon os-icon-instagram"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-5 col-lg-8">
+                    <div class="row">
+                        <div class="col-lg-4 b-r padded">
+                            <h4 class="heading-small p-custom-size" >Address</h4>
+                            <p style="font-size: 20px" th:text="${globalSettingParam.get('SchoolAddress')}"> College Address </p>
+
+                        </div>
+                        <div class="col-lg-4 b-r padded">
+                            <h6 class="heading-small p-custom-size" >Phone Numbers</h6>
+                            <ul th:each="phone : ${globalSettingParam.get('PhoneLines')}">
+                                <li class="p-custom-size" th:text="${phone}"> +(234-8056800999) </li>
+
+                            </ul>
+                            <h6 class="heading-small p-custom-size" >Email</h6>
+                            <ul th:each="mail : ${globalSettingParam.get('PublicMailBag')}">
+                                <li class="p-custom-size" th:text="${mail}"> info@babcock.edu.ng </li>
+
+                            </ul>
+
+                        </div>
+                        <div class="col-lg-4 padded">
+
+                            <h6 class="heading-small p-custom-size" > Quick Links</h6>
+                                <ul class="p-custom-size">
+                                    <li><a href="#">About Us </a>  </li>
+                                    <li><a href="#">Admissions</a>   </li>
+                                    <li><a href="#">Student Life </a>   </li>
+                                    <li><a href="#">Gallery</a>   </li>
+                                    <li><a href="#">Contact Us </a>   </li>
+
+                                </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="deep-footer p-custom-size">
+            <span class="p-custom-size">Powered By </span>
+            <a href="#" class="p-custom-size">Sawo Digital</a>.
+            <span class="p-custom-size"> &copy; 2019 All rights reserved.</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

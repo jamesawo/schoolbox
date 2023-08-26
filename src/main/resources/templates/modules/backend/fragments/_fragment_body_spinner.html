@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+<!-- Static Modal -->
+
+<div th:fragment="body_spinner" id="back-overlay" class="">
+
+    <div aria-hidden="true" class="modal modal-static fade bd-example-modal-sm" id="modalWait"
+         role="dialog" tabindex="-1" data-backdrop="static" data-keyboard="false" style="overflow-y: hidden;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="text-center custom-space">
+                        <h6>Please Wait..</h6>
+                    </div>
+                    <div class="progress spinner-custom-space">
+                        <div class=" progress-bar progress-bar-success progress-bar-striped progress-bar-animated active"
+                             role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
+                             aria-valuemax="100">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<div id="back-overlay" th:fragment="body_spinner">-->
+<!--    <div id="o-text">-->
+
+<!--        <div class="text-center">-->
+<!--            <h6 class="text-uppercase">Please Wait..</h6>-->
+<!--        </div>-->
+<!--        <div class="progress">-->
+<!--            <div class=" progress-bar progress-bar-primary progress-bar-striped progress-bar-animated active" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!--    </div>-->
+<!--</div>-->
+
+
+</body>
+</html>

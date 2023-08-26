@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{modules/backend/layouts/master}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title>Global Setting (Update College Profile)</title>
+</head>
+<body>
+<div>
+    <ul layout:fragment="breadcrumbs" class="breadcrumb">
+        <li class="breadcrumb-item"><a th:href="@{/SLMS/Dashboard}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a>Global Setting</a></li>
+    </ul>
+</div>
+
+<div layout:fragment="content">
+
+    <div class="content-box">
+
+        <div class="col-lg-12">
+            <div class="element-wrapper">
+                <h6 class="element-header">Update College Profile</h6>
+                <div class="element-box">
+
+                    <form th:action="@{/SLMS/GlobalSetting/ManageSpecialEffects}" method="post"
+                          th:object="${globalSettingRequest}" enctype="multipart/form-data" autocomplete="off">
+
+                        <!--College Profile -->
+                        <fieldset class="form-group">
+
+                            <legend><span> College Profile</span></legend>
+
+                            <div class="row">
+                                <div class="col-sm-3 mb-3 text-center">
+                                    <label class="text-sm-center">School Official Logo</label>
+                                    <br>
+
+                                    <img class="z-depth rounded img-thumbnail" id="imgLogo"
+                                         th:src="${settings.get('SchoolOfficialLogo')} ?  @{'data:image/png;base64,'+${settings.get('SchoolOfficialLogo')} } : '' "
+                                         data-holder-rendered="true" width="200" height="120">
+                                    <br><br>
+                                    <label for="logo" class="btn btn-md btn-primary text-center"> <i
+                                            class="fa fa-upload" aria-hidden="true"></i> </label>
+                                    <br>
+
+                                    <input type="file" name="SchoolOfficialLogo" id="logo" class="input-file"/>
+                                    <label><span></span></label>
+
+                                </div>
+
+                                <div class="col-sm-3 mb-3 text-center">
+                                    <label>Receipt Signature</label>
+                                    <br>
+                                    <img class="z-depth rounded img-thumbnail" id="imgReceiptSignature"
+                                         th:src="${settings.get('ReceiptSignature')} ?  @{'data:image/png;base64,'+${settings.get('ReceiptSignature')} } : '' "
+                                         data-holder-rendered="true" width="200" height="120">
+                                    <br><br>
+                                    <label for="receiptSignature" class="btn btn-md btn-primary text-center"> <i
+                                            class="fa fa-upload" aria-hidden="true"></i> </label>
+                                    <br>
+
+                                    <input type="file" name="ReceiptSignature" id="receiptSignature"
+                                           class="input-file"/>
+                                    <label><span></span></label>
+
+                                </div>
+
+                                <div class="col-sm-3 mb-3 text-center">
+                                    <label>Registrar Signature</label>
+                                    <br>
+                                    <img class="z-depth rounded img-thumbnail" id="imgRegistrarSignature"
+                                         th:src="${settings.get('RegistrarSignature')} ? @{'data:image/png;base64,'+${settings.get('RegistrarSignature')} } : ''"
+                                         data-holder-rendered="true" width="200" height="120">
+                                    <br><br>
+
+                                    <label for="registrarSignature" class="btn btn-md btn-primary text-center"> <i
+                                            class="fa fa-upload" aria-hidden="true"></i> </label>
+                                    <br>
+
+                                    <input type="file" name="RegistrarSignature" id="registrarSignature"
+                                           class="input-file"/>
+                                    <label><span></span></label>
+
+
+                                </div>
+
+                                <div class="col-sm-3 mb-3 text-center">
+                                    <label class="text-sm">Alternative Logo</label>
+                                    <br>
+                                    <img class="z-depth rounded img-thumbnail" id="imgAlternativeLogo"
+                                         th:src="${settings.get('AlternativeLogo')} ? @{'data:image/png;base64,'+${settings.get('AlternativeLogo')} } : '' "
+                                         data-holder-rendered="true" width="200" height="120">
+                                    <br><br>
+
+                                    <label for="alternativeLogo" class="btn btn-md btn-primary text-center"> <i
+                                            class="fa fa-upload" aria-hidden="true"></i> </label>
+                                    <br>
+
+                                    <input type="file" name="AlternativeLogo" id="alternativeLogo" class="input-file"/>
+                                    <label><span></span></label>
+
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                        <!--College Information -->
+                        <fieldset class="form-group">
+
+                            <legend><span> College Information</span></legend>
+
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> School Name </label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="SchoolName" type="text"
+                                           th:value="${settings.get('SchoolName')}">
+                                </div>
+
+                                <label class="col-form-label col-sm-2" for=""> Public MailBag <small><i
+                                        class="text-primary"> (Separated by comma)</i></small> </label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="PublicMailBag" type="text"
+                                           th:value="${settings.get('PublicMailBag')}">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> School Address </label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="SchoolAddress" type="text"
+                                           th:value="${settings.get('SchoolAddress')}">
+                                </div>
+
+                                <label class="col-form-label col-sm-2" for=""> Phone <small><i class="text-primary">
+                                    (Separated by comma)</i></small> </label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="PhoneLines" type="text"
+                                           th:value="${settings.get('PhoneLines')}">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Private Mail Bag </label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="PrivateMailBag" type="text"
+                                           th:value="${settings.get('PrivateMailBag')}">
+                                </div>
+
+                                <label class="col-form-label col-sm-2" for=""> School Website Url </label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="SchoolWebSiteUrl" type="url"
+                                           th:value="${settings.get('SchoolWebSiteUrl')}">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Slogan/Motto </label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="SchoolSlogan" type="text"
+                                           th:value="${settings.get('SchoolSlogan')}">
+                                </div>
+
+                            </div>
+
+
+                        </fieldset>
+
+                        <!--Report Setup -->
+
+                        <fieldset class="form-group">
+
+                            <legend><span> Report Setup </span></legend>
+
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Report Header</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="ReportHeader" type="text"
+                                           th:value="${settings.get('ReportHeader')}">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Report Footer</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="ReportFooter" type="text"
+                                           th:value="${settings.get('ReportFooter')}">
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                        <!--Payment Setup-->
+
+                        <fieldset class="form-group">
+
+                            <legend><span>  Payment Setup </span></legend>
+
+
+                            <div class="form-group row">
+
+                                <label class="col-form-label col-sm-2" for=""> Merchant ID </label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="MerchantID" type="text"
+                                           th:value="${settings.get('MerchantID')}">
+                                </div>
+
+                                <label class="col-form-label col-sm-2" for=""> Receipt Signatory </label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="ReceiptSignatory" type="text"
+                                           th:value="${settings.get('ReceiptSignatory')}">
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Zenith Commission </label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="ZenithCommission" type="text"
+                                           th:value="${settings.get('ZenithCommission')}">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Urban MFB Service Url </label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="UrbanMFBServiceUrl" type="text"
+                                           th:value="${settings.get('UrbanMFBServiceUrl')}">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Interswitch Commission </label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="InterswitchCommission" type="text"
+                                           th:value="${settings.get('InterswitchCommission')}">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Interswitch Item Code </label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="InterswitchItemCode" type="text"
+                                           th:value="${settings.get('InterswitchItemCode')}">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Interswitch Merchant ID </label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="InterswitchMerchantID" type="text"
+                                           th:value="${settings.get('InterswitchMerchantID')}">
+                                </div>
+                            </div>
+
+
+                        </fieldset>
+
+                        <!--Support Parameter -->
+
+                        <fieldset class="form-group">
+
+                            <legend><span> Support Parameter </span></legend>
+
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Email</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="SupportEmail" type="text"
+                                           th:value="${settings.get('SupportEmail')}">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Email Password</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="EmailPassword" type="text"
+                                           th:value="${settings.get('EmailPassword')}">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Mail SMTP Server</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="MailSMTPServer" type="text"
+                                           th:value="${settings.get('MailSMTPServer')}">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Mail SMTP Port </label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="MailSMTPPort" type="text"
+                                           th:value="${settings.get('MailSMTPPort')}">
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                        <!--Registry Info -->
+
+                        <fieldset class="form-group">
+
+                            <legend><span> Registry Info </span></legend>
+
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Admission Letter Signatory</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="AdmissionLetterSignatory" type="text"
+                                           th:value="${settings.get('AdmissionLetterSignatory')}">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Admission Letter Signatory
+                                    Qualification</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="AdmissionLetterSignatoryQualification" type="text"
+                                           th:value="${settings.get('AdmissionLetterSignatoryQualification')}">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Registry Email</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="RegistryEmail" type="text"
+                                           th:value="${settings.get('RegistryEmail')}">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Registry Ref </label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="RegistryRef" type="text"
+                                           th:value="${settings.get('RegistryRef')}">
+                                </div>
+                            </div>
+
+                        </fieldset>
+
+                        <!--Application Config -->
+
+                        <fieldset class="form-group">
+
+                            <legend><span> Application Config </span></legend>
+
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Admission Result Message</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="AdmissionResultMessage"
+                                           th:value="${settings.get('AdmissionResultMessage')}" type="text">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> School ID</label>
+                                <div class="col-sm-4">
+                                    <input class="form-control" name="SchoolID" type="text"
+                                           th:value="${settings.get('SchoolID')}">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Allow Acceptance?</label>
+                                <div class="col-sm-4">
+                                    <select name="AllowAcceptance" class="form-control">
+                                        <option>Select..</option>
+                                        <option value="Yes" th:selected="${settings.get('AllowAcceptance') == 'Yes'}">
+                                            Yes
+                                        </option>
+                                        <option value="No" th:selected="${settings.get('AllowAcceptance') == 'No'}">No
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <label class="col-form-label col-sm-2" for=""> Allow Result Check?</label>
+                                <div class="col-sm-4">
+                                    <select name="AllowResultCheck" id="" class="form-control">
+                                        <option>Select..</option>
+                                        <option value="Yes" th:selected="${settings.get('AllowResultCheck') == 'Yes'}">
+                                            Yes
+                                        </option>
+                                        <option value="No" th:selected="${settings.get('AllowResultCheck') == 'No'}">
+                                            No
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Enable Carry-Over Courses?</label>
+                                <div class="col-sm-4">
+                                    <select name="EnableCarryOverCourses" class="form-control">
+                                        <option>Select..</option>
+                                        <option value="Yes"
+                                                th:selected="${settings.get('EnableCarryOverCourses') == 'Yes'}">Yes
+                                        </option>
+                                        <option value="No"
+                                                th:selected="${settings.get('EnableCarryOverCourses') == 'No'}">No
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <label class="col-form-label col-sm-2" for=""> Allow Passport Change?</label>
+                                <div class="col-sm-4">
+                                    <select name="AllowPassportChange" class="form-control">
+                                        <option>Select..</option>
+                                        <option value="Yes"
+                                                th:selected="${settings.get('AllowPassportChange') == 'Yes'}">Yes
+                                        </option>
+                                        <option value="No" th:selected="${settings.get('AllowPassportChange') == 'No'}">
+                                            No
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Application Version</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" name="ApplicationVersion"
+                                           th:value="${settings.get('ApplicationVersion')}" readonly>
+                                </div>
+
+                                <label class="col-form-label col-sm-2" for=""> Allow State & Lga Change? </label>
+                                <div class="col-sm-4">
+                                    <select name="AllowStateChange" class="form-control">
+                                        <option>Select..</option>
+                                        <option value="Yes" th:selected="${settings.get('AllowStateChange') == 'Yes'}">
+                                            Yes
+                                        </option>
+                                        <option value="No" th:selected="${settings.get('AllowStateChange') == 'No'}">
+                                            No
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-form-label col-sm-2" for=""> Show Customizer</label>
+                                <div class="col-sm-4">
+                                    <select name="ShowCustomizer" class="form-control">
+                                        <option>Select..</option>
+                                        <option value="Yes" th:selected="${settings.get('ShowCustomizer') == 'Yes'}">
+                                            Yes
+                                        </option>
+                                        <option value="No" th:selected="${settings.get('ShowCustomizer') == 'No'}">No
+                                        </option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </fieldset>
+
+
+                        <div class="form-buttons-w">
+                            <button class="btn btn-primary" type="submit"> Submit</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div layout:fragment="body_custom_script">
+
+    <script type="text/javascript" th:src="@{/assets/backend/custom/js/GlobalSetting/ManageSpecialEffect.js}"></script>
+
+    <script type="text/javascript" th:if="${message}" th:inline="javascript">
+        PNotify.alert({text: /*[[${message}]]*/ 'Success', type: 'success'});
+    </script>
+
+</div>
+
+
+</body>
+</html>

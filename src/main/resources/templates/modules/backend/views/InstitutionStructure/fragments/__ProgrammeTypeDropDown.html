@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="row" th:fragment="ProgrammeTypeDropDown(programmeCategories)">
+
+    <div class="form-group mt-lg col-lg-12">
+        <div>
+            <label class="text-uppercase">Programme Category</label>
+            <select id="selProgrammeCategory" class="form-control selProgrammeCategory selPType">
+                <option value="0">Select..</option>
+
+                <option th:each="category : ${programmeCategories}"
+                        th:value="${category.id}" th:text="${category.description}"
+                        th:attr="data-id=${category.id},data-description=${category.description}"/>
+
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group mt-lg col-lg-12 divProgrammeType  hide" id="divProgrammeType">
+
+        <label class="text-uppercase">Programme Type</label>
+        <select name="" id="selPType" class="form-control selPType">
+            <option value="0">Select..</option>
+        </select>
+
+    </div>
+
+
+</div>
+
+</body>
+</html>

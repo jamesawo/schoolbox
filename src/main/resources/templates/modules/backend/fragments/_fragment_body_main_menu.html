@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+
+</head>
+<body>
+<!--------------------START - Main Menu-------------------->
+<div th:fragment="body_main_menu"  class="menu-w color-scheme-light color-style-transparent
+menu-position-side menu-side-left menu-layout-compact
+sub-menu-style-over sub-menu-color-bright selected-menu-color-light
+menu-activated-on-hover menu-has-selected-link">
+    <div class="logo-w">
+        <a class="logo" th:href="@{/SLMS/Dashboard}">
+            <div class="logo-element"></div>
+            <div class="logo-label" th:text="${globalSettingParam.get('CollegeName')}"> </div>
+        </a>
+    </div>
+    <div class="logged-user-w avatar-inline">
+        <div class="logged-user-i">
+            <div class="avatar-w">
+
+            </div>
+            <div class="logged-user-info-w">
+                <div class="logged-user-name text-uppercase" sec:authentication="name"></div>
+                <div class="logged-user-role">Administrator</div>
+            </div>
+            <div class="logged-user-toggler-arrow">
+                <div class="os-icon os-icon-chevron-down"></div>
+            </div>
+            <div class="logged-user-menu color-style-bright">
+                <div class="logged-user-avatar-info">
+                    <div class="avatar-w">
+
+                    </div>
+                    <div class="logged-user-info-w">
+                        <div class="logged-user-name text-uppercase" sec:authentication="name"></div>
+                        <div class="logged-user-role">Administrator</div>
+                    </div>
+                </div>
+                <div class="bg-icon"><i class="os-icon os-icon-wallet-loaded"></i></div>
+                <ul>
+
+                    <li><a target="_blank" href="/"><i class="os-icon os-icon-ui-49"></i><span>Student Facing</span></a></li>
+                    <li><a th:href="@{/SLMS/UserManagement/Password/ResetPassword}"><i class="os-icon os-icon-ui-49"></i><span>Change Password</span></a></li>
+                    <li><a href="/logout" th:href="@{/logout}"><i class="os-icon os-icon-ui-11"></i><span>Logout</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="menu-actions">
+
+    </div>
+    <div class="element-search autosuggest-search-activator"><input placeholder="Start typing to search..." type="text"></div>
+    <h1 class="menu-page-header">Page Header</h1>
+
+    <ul class="main-menu">
+        <li class="sub-header"><span>MODULES</span></li>
+        <li class="selected has-sub-menu"><a>
+            <div class="icon-w">
+                <div class="os-icon os-icon-layout"></div>
+            </div><span>Admission Parameter Setup</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">Admission Parameter Setup</div>
+                <div class="sub-menu-icon"><i class="os-icon os-icon-layout"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/backend/fragments/__fragment_mod_nav_links :: ApplicationParameterSetup_links"></ul>
+                </div>
+            </div>
+        </li>
+        <li class=" has-sub-menu"><a >
+            <div class="icon-w">
+                <div class="os-icon os-icon-layers"></div>
+            </div><span>Application</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">Application</div>
+                <div class="sub-menu-icon"><i class="os-icon os-icon-layers"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/backend/fragments/__fragment_mod_nav_links :: Application_links"></ul>
+                </div>
+            </div>
+        </li>
+        <li class="sub-header"><span>MODULES</span></li>
+        <li class=" has-sub-menu"><a>
+            <div class="icon-w">
+                <div class="os-icon os-icon-package"></div>
+            </div><span>Course Management</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">Course Management</div>
+                <div class="sub-menu-icon"><i class="os-icon os-icon-package"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/backend/fragments/__fragment_mod_nav_links :: CourseManagement_links"></ul>
+                </div>
+            </div>
+        </li>
+        <li class=" has-sub-menu"><a >
+            <div class="icon-w">
+                <div class="os-icon os-icon-file-text"></div>
+            </div><span>Admission Parameter Setup</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">Admission Parameter Setup</div>
+                <div class="sub-menu-icon"><i class="os-icon os-icon-file-text"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/backend/fragments/__fragment_mod_nav_links :: AdmissionParameterSetup_links"></ul>
+                </div>
+            </div>
+        </li>
+
+        <li class="sub-header"><span>Elements</span></li>
+        <li class=" has-sub-menu"><a >
+            <div class="icon-w">
+                <div class="os-icon os-icon-mail"></div>
+            </div><span>Course Requirement Setup</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">Course Requirement Setup</div>
+                <div class="sub-menu-icon"><i class="os-icon os-icon-mail"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/backend/fragments/__fragment_mod_nav_links :: CourseRequirementSetup_links"></ul>
+                </div>
+            </div>
+        </li>
+        <li class=" has-sub-menu"><a >
+            <div class="icon-w">
+                <div class="os-icon os-icon-award"></div>
+            </div><span>Fees Management</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">Fees Management</div>
+                <div class="sub-menu-icon"><i class="os-icon os-icon-users"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/backend/fragments/__fragment_mod_nav_links :: FeesManagement_links"></ul>
+
+                </div>
+            </div>
+        </li>
+        <li class=" has-sub-menu"><a >
+            <div class="icon-w">
+                <div class="os-icon os-icon-settings"></div>
+            </div><span>Global Settings</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">Global Settings</div>
+                <div class="sub-menu-icon"><i class="os-icon os-icon-edit-32"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/backend/fragments/__fragment_mod_nav_links :: GlobalSettings_links"></ul>
+                </div>
+            </div>
+        </li>
+        <li class=" has-sub-menu"><a >
+            <div class="icon-w">
+                <div class="os-icon os-icon-grid"></div>
+            </div><span>Institution Structure Setup</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">Institution Structure Setup</div>
+                <div class="sub-menu-icon"><i class="os-icon os-icon-grid"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/backend/fragments/__fragment_mod_nav_links :: InstitutionStructureSetup_links"></ul>
+
+                </div>
+            </div>
+        </li>
+        <li class="sub-header"><span>MODULES</span></li>
+        <li class=" has-sub-menu"><a >
+            <div class="icon-w">
+                <div class="os-icon os-icon-aperture"></div>
+            </div><span>Know Your Ward Management</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">Know Your Ward Management</div>
+                <div class="sub-menu-icon"><i class="os-icon os-icon-zap"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/backend/fragments/__fragment_mod_nav_links :: KnowYourManagement_links"></ul>
+                </div>
+            </div>
+        </li>
+
+        <li class=" has-sub-menu"><a >
+            <div class="icon-w">
+                <div class="os-icon os-icon-book"></div>
+            </div><span>Library Management</span>
+            </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">Library Management</div>
+                <div class="sub-menu-icon"><i class="os-icon os-icon-award"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/backend/fragments/__fragment_mod_nav_links :: LibraryManagement_links"></ul>
+                </div>
+            </div>
+        </li>
+        <li class=" has-sub-menu"><a >
+            <div class="icon-w">
+                <div class="os-icon os-icon-airplay"></div>
+            </div><span>Manage Non Student</span>
+            </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">Manage Non Student</div>
+                <div class="sub-menu-icon"><i class="os-icon os-icon-git-branch"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/backend/fragments/__fragment_mod_nav_links :: ManageNonStudent_links"></ul>
+                </div>
+            </div>
+        </li>
+        <li class=" has-sub-menu"><a >
+            <div class="icon-w">
+                <div class="os-icon os-icon-tasks-checked"></div>
+            </div><span>Result Manager</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">Result Manager</div>
+                <div class="sub-menu-icon"><i class="os-icon os-icon-airplay"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/backend/fragments/__fragment_mod_nav_links :: ResultManager_links"></ul>
+                </div>
+            </div>
+        </li>
+        <li class=" has-sub-menu"><a >
+            <div class="icon-w">
+                <div class="os-icon os-icon-user-check"></div>
+            </div><span>Staff Manager</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">Staff Manager</div>
+                <div class="sub-menu-icon"><i class="os-icon os-icon-users"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/backend/fragments/__fragment_mod_nav_links :: StaffManager_links"></ul>
+                </div>
+            </div>
+        </li>
+        <li class="sub-header"><span>MODULES</span></li>
+        <li class=" has-sub-menu"><a >
+            <div class="icon-w">
+                <div class="os-icon os-icon-move"></div>
+            </div><span>Student Management</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">Student Management</div>
+                <div class="sub-menu-icon"><i class="os-icon os-icon-person"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/backend/fragments/__fragment_mod_nav_links :: StudentManagement_links"></ul>
+                </div>
+            </div>
+        </li>
+        <li class=" has-sub-menu"><a >
+            <div class="icon-w">
+                <div class="os-icon os-icon-book-open"></div>
+            </div><span>Transcript Management</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">Transcript Management</div>
+                <div class="sub-menu-icon"><i class="os-icon os-icon-book-open"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/backend/fragments/__fragment_mod_nav_links :: TranscriptManagement_links"></ul>
+                </div>
+            </div>
+        </li>
+        <li class=" has-sub-menu"><a >
+            <div class="icon-w">
+                <div class="os-icon os-icon-users"></div>
+            </div><span>Users Management</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">Users Management</div>
+                <div class="sub-menu-icon"><i class="os-icon os-icon-users"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/backend/fragments/__fragment_mod_nav_links :: UserManagement_links"></ul>
+                </div>
+            </div>
+        </li>
+        <li class="sub-header"><span>PERFORMANCE</span></li>
+        <li class=" has-sub-menu"><a >
+            <div class="icon-w">
+                <div class="os-icon os-icon-users"></div>
+            </div><span>System Performance</span>
+            </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-header">Check Performance</div>
+                <div class="sub-menu-icon"><i class="os-icon os-icon-users"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/backend/fragments/__fragment_mod_nav_links :: SystemPerformance_links"></ul>
+                </div>
+            </div>
+        </li>
+
+    </ul>
+
+    <div class="side-menu-magic">
+        <div th:replace="/modules/backend/fragments/__fragment_mod_nav_ads :: MenuAdsSpace" >  </div>
+    </div>
+</div>
+<!--------------------END - Main Menu-------------------->
+</body>
+</html>

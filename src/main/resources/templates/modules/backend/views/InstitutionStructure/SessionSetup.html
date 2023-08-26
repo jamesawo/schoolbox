@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{modules/backend/layouts/master}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title> SESSION SETUP  </title>
+</head>
+<body>
+<div>
+    <ul layout:fragment="breadcrumbs" class="breadcrumb" >
+        <li class="breadcrumb-item"><a th:href="@{/SLMS/Dashboard}">Admin</a></li>
+        <li class="breadcrumb-item"><a href="#"> Institution Structure</a></li>
+        <li class="breadcrumb-item"><a th:href="@{/SLMS/InstitutionStructure/SessionSetup}"> Session Setup</a></li>
+    </ul>
+</div>
+
+<div layout:fragment="content">
+
+    <div class="content-box">
+        <div class="element-wrapper">
+            <h6 class="element-header text-uppercase">Session Setup</h6>
+
+            <div class="element-box">
+
+                <div class="element-box-content">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label> Programme Type </label>
+                            <select name=""  class="form-control">
+                                <option value="">Select</option>
+                                <option th:each="programmeType : ${programmeTypes}"
+                                        th:text="${programmeType.description}"
+                                        th:value="${programmeType.id}"> </option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label> Semester </label>
+                            <select name=""  class="form-control">
+                                <option value="">Select</option>
+                                <option th:each="semester : ${semesters}"
+                                        th:value="${semester.id}"
+                                        th:text="${semester.description}"> </option>
+
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label > Start Date </label>
+                            <div class="date-input">
+                                <input type="text" class="single-daterange form-control" placeholder="Start Date">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label > End Date </label>
+                            <div class="date-input">
+                                <input type="text" class="single-daterange form-control" placeholder="End Date">
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-1 form-group">
+                            <button class="btn btn-md btn-primary" >  <i class="fa fa-search-plus" aria-hidden="true"></i> </button>
+                        </div>
+
+                        <div class="col-1"></div>
+
+                        <div class="col form-group">
+                            <button class="btn btn-md btn-primary" id="btnCreateSession">  <i class="fa fa-plus" aria-hidden="true"></i> Create Session</button>
+                            <button class="btn btn-md btn-primary" id="btnSetSemester">  <i class="fa fa-plus-square" aria-hidden="true"></i> Set Semester </button>
+                            <button class="btn btn-md btn-primary" id="btnSetSession"> <i class="fa fa-minus-square" aria-hidden="true"></i> Set Application Session </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="element-box">
+                <div class="table-responsive table">
+                    <table class="table-borderless table-striped table">
+                        <thead>
+                        <tr class="text-left">
+                            <th scope="col"><input type="checkbox"> </th>
+                            <th scope="col"> Programme Type</th>
+                            <th scope="col">Session</th>
+                            <th scope="col"> Semester </th>
+                            <th scope="col"> Start Date </th>
+                            <th scope="col"> End Date </th>
+                            <th scope="col"> Code </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="text-left">
+                            <td><input type="checkbox"></td>
+                            <td>FULL TIME ND</td>
+                            <td>2022/2023</td>
+                            <td>FIRST SEMESTER</td>
+                            <td>22/11/2018</td>
+                            <td>30/11/2018</td>
+                            <td></td>
+                        </tr>
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div layout:fragment="body_modal">
+
+        <!--Create Session-->
+        <form th:action="@{/SLMS/InstitutionStructure/SessionCreate}" method="post" th:object="${sessionDTO}">
+            <div aria-hidden="true" aria-labelledby="myLargeModalLabel" id="createSession" class="modal fade" role="dialog" tabindex="-1" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title"> - </h5>
+                                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"> &times;</span></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="row">
+                                    <div class="form-group mt-lg col-lg-12">
+                                        <label for="">Programme Type</label>
+                                        <select id="selProgrammeTypeCreateSession" th:field="*{institutionProgrammeType}" class="form-control" required>
+                                            <option value="0">Select</option>
+                                            <option th:each="programmeType : ${programmeTypes}"
+                                                    th:text="${programmeType.description}"
+                                                    th:value="${programmeType.id}"> </option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group mt-lg col-lg-12">
+                                        <label for="">Current Session</label>
+                                        <input type="text" id="txtCurrentSessionCreate" readonly class="form-control" required>
+                                    </div>
+
+                                    <div class="form-group mt-lg col-lg-12">
+                                        <label for="">New Session</label>
+                                        <input type="text" class="form-control" th:field="*{description}" required>
+                                    </div>
+
+
+                                    <div class="form-group mt-lg col-lg-12">
+                                        <label > Start Date </label>
+                                        <div class="date-input">
+                                            <input type="text" class="single-daterange form-control" placeholder="Start Date" th:field="*{startDate}" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mt-lg col-lg-12">
+                                        <label > End Date </label>
+                                        <div class="date-input">
+                                            <input type="text" class="single-daterange form-control" placeholder="End Date" th:field="*{endDate}" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mt-lg col-lg-12">
+                                        <label for="">Session Code</label>
+                                        <input type="text" class="form-control" th:field="*{code}" required>
+                                    </div>
+                                    <input type="hidden" value="Create Session" name="command" >
+
+                                </div>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" data-dismiss="modal" type="button"> Close</button>
+                                <button class="btn btn-primary" type="submit"> Create </button>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </form>
+
+        <!--Set Semester-->
+        <form th:action="@{/SLMS/InstitutionStructure/SessionCreate}" method="post" th:object="${sessionDTO}">
+            <div aria-hidden="true" aria-labelledby="myLargeModalLabel" id="setSemester" class="modal fade" role="dialog" tabindex="-1" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title"> - </h5>
+                            <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"> &times;</span></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="row">
+                                <div class="form-group mt-lg col-lg-12">
+                                    <label for="">Programme Type</label>
+                                    <select id="selProgrammeTypeSetSemester" class="form-control" th:field="*{institutionProgrammeType}">
+                                        <option value="">Select</option>
+                                        <option th:each="programmeType : ${programmeTypes}"
+                                                th:text="${programmeType.description}"
+                                                th:value="${programmeType.id}"> </option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group mt-lg col-lg-12">
+                                    <label for="">Session</label>
+                                    <input type="text" id="txtSessionSetSemester" class="form-control" readonly >
+                                </div>
+
+                                <div class="form-group mt-lg col-lg-12">
+                                    <label for="">Semester</label>
+                                    <select name="" id="selSemesterCreateSession" class="form-control" th:field="*{institutionSemester}">
+                                        <option value="">Select</option>
+                                        <option th:each="semester : ${semesters}"
+                                                th:value="${semester.id}"
+                                                th:text="${semester.description}"> </option>
+                                    </select>
+                                </div>
+                                <input type="hidden" value="Set Semester" name="command" >
+
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-dismiss="modal" type="button"> Close</button>
+                            <button class="btn btn-primary" type="submit"> Create </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form >
+
+        <!--Set Session-->
+        <form th:action="@{/SLMS/InstitutionStructure/SessionCreate}" method="post" th:object="${sessionDTO}">
+            <div aria-hidden="true" aria-labelledby="myLargeModalLabel" id="setSession" class="modal fade" role="dialog" tabindex="-1" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id=""> - </h5>
+                            <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"> &times;</span></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="row">
+                                <div class="form-group mt-lg col-lg-12">
+                                    <label for="">Programme Type</label>
+
+                                    <select  id="selProgrammeTypeSetSession" th:field="*{institutionProgrammeType}" class="form-control" required>
+                                        <option value="">Select</option>
+                                        <option th:each="programmeType : ${programmeTypes}"
+                                                th:text="${programmeType.description}"
+                                                th:value="${programmeType.id}"> </option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group mt-lg col-lg-12">
+                                    <label for="">Current Semester</label>
+                                    <input type="text" id="txtSemesterSetSession" class="form-control" readonly>
+                                </div>
+
+                                <div class="form-group mt-lg col-lg-12">
+                                    <label for="">Current Session</label>
+                                    <input type="text" id="txtSessionSetSession" class="form-control" readonly>
+                                </div>
+
+                                <div class="form-group mt-lg col-lg-12">
+                                    <label for="">Session</label>
+                                    <select class="form-control" th:field="*{institutionSession}" required>
+                                        <option value="">Select</option>
+                                        <option th:each="sess : ${sessions}"
+                                                th:text="${sess.description}"
+                                                th:value="${sess.id}"> </option>
+                                    </select>
+                                </div>
+                                <input type="hidden" value="Set Session" name="command" >
+
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-dismiss="modal" type="button"> Close</button>
+                            <button class="btn btn-primary" type="submit"> Set Session </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+<div layout:fragment="body_custom_script">
+
+    <script type="text/javascript" th:src="@{/assets/backend/custom/js/InstitutionStructure_Js/SessionSetup.js}"></script>
+    <script type="text/javascript" th:if="${message}" th:inline="javascript">
+        PNotify.alert({
+            text: /*[[${message}]]*/ 'Success',
+            type: 'success'
+        });
+    </script>
+</div>
+
+</body>
+
+</html>

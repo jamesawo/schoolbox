@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{modules/frontend/layouts/master}"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+
+    <title>Welcome </title>
+</head>
+<body>
+
+<div layout:fragment="content" class="as-grid">
+
+    <div class="content-i">
+        <div class="content-box">
+            <div class="container">
+                <div class="row mbr-justify-content-center custom-space">
+
+                    <div class="col-lg-3 mbr-col-md-10">
+
+                    </div>
+
+                    <div class="col-lg-6 mbr-col-md-10">
+
+                        <div id="" class="img-fluid custom-space" style="margin-bottom: 5em" >
+
+                            <img class="d-block w-100 img custom-space" src="" th:src="@{/assets/images/res/school-logo.png}" alt=""/>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 mbr-col-md-10">
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div layout:fragment="body_custom_script">
+
+</div>
+
+
+
+</body>
+</html>

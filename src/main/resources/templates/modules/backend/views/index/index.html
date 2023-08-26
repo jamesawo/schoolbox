@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{modules/backend/layouts/master}">
+<head>
+
+    <title>Dashboard </title>
+</head>
+<body>
+<div>
+    <ul layout:fragment="breadcrumbs" class="breadcrumb" >
+        <li class="breadcrumb-item"><a href="/SLMS/Dashboard">Dashboard</a></li>
+    </ul>
+</div>
+
+<div layout:fragment="content" class="custom-space as-grid">
+
+    <div class="content-i custom-space">
+        <div class="content-box ">
+            <div class="container">
+                <div class="row mbr-justify-content-center custom-space">
+
+                    <div class="col-lg-3 mbr-col-md-10">
+                    </div>
+
+                    <div class="col-lg-6 mbr-col-md-10">
+
+                        <div id="" class="img-fluid custom-space" style="margin-bottom: 5em" >
+
+                            <img class="d-block w-100 img custom-space" th:src="@{/assets/images/res/school-logo.png}"/>
+
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-3 mbr-col-md-10">
+
+                    </div>
+                    <div class="container">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<script layout:fragment="body_custom_script" type="text/javascript">
+
+</script>
+
+</body>
+</html>

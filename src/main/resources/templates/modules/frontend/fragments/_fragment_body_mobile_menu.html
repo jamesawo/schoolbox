@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+
+</head>
+<body>
+
+<!--------------------START - Mobile Menu -------------------->
+<div th:fragment="body_mobile_menu" class="menu-mobile menu-activated-on-click color-scheme-dark">
+    <div class="mm-logo-buttons-w">
+        <a class="mm-logo" href="/">
+            <span th:text="${globalSettingParam.get('CollegeName')}">College Name</span></a>
+        </a>
+        <div class="mm-buttons">
+            <div class="content-panel-open">
+                <div class="os-icon os-icon-grid-circles"></div>
+            </div>
+            <div class="mobile-menu-trigger">
+                <div class="os-icon os-icon-hamburger-menu-1"></div>
+            </div>
+        </div>
+    </div>
+    <div class="menu-and-user">
+        <div class="logged-user-w">
+            <div class="avatar-w">
+            </div>
+            <div class="logged-user-info-w" sec:authorize="isAuthenticated()">
+                <div class="logged-user-name" sec:authentication="name"></div>
+                <div class="logged-user-role"></div>
+            </div>
+        </div>
+        <!--------------------START - Mobile Menu List-------------------->
+
+        <ul class="main-menu">
+            <li class="has-sub-menu"><a >
+                <div class="icon-w">
+                    <div class="os-icon os-icon-layout"></div>
+                </div><span class="text-uppercase">Home </span>
+            </a>
+
+                <ul class="sub-menu" th:replace="/modules/frontend/fragments/__fragment_mod_nav_links :: HomeLinks">
+                </ul>
+
+            </li>
+            <li class="has-sub-menu"><a >
+                <div class="icon-w">
+                    <div class="os-icon os-icon-layers"></div>
+                </div><span class="text-uppercase">APPLICATION</span>
+                </a>
+                <ul class="sub-menu" th:replace="/modules/frontend/fragments/__fragment_mod_nav_links :: Applicationlinks"></ul>
+            </li>
+            <li class="has-sub-menu"><a >
+                <div class="icon-w">
+                    <div class="os-icon os-icon-package"></div>
+                </div><span class="text-uppercase">Acceptance Fee</span>
+            </a>
+                <ul class="sub-menu" th:replace="/modules/frontend/fragments/__fragment_mod_nav_links :: AcceptanceLinks"></ul>
+            </li>
+
+            <li class="has-sub-menu"><a >
+                <div class="icon-w">
+                    <div class="os-icon os-icon-file-text"></div>
+                </div><span class="text-uppercase">Result Check</span>
+                </a>
+
+                <ul class="sub-menu" th:replace="/modules/frontend/fragments/__fragment_mod_nav_links :: ResultCheckLinks"></ul>
+
+            </li>
+            <li class="has-sub-menu"><a >
+                <div class="icon-w">
+                    <div class="os-icon os-icon-life-buoy"></div>
+                </div><span class="text-uppercase">Student Corner</span>
+            </a>
+                <ul class="sub-menu" th:replace="/modules/frontend/fragments/__fragment_mod_nav_links :: StudentCornerLinks"></ul>
+            </li>
+            <li class="has-sub-menu"><a >
+                <div class="icon-w">
+                    <div class="os-icon os-icon-mail"></div>
+                </div><span class="text-uppercase">Online Transcript</span>
+            </a>
+                <ul class="sub-menu" th:replace="/modules/frontend/fragments/__fragment_mod_nav_links :: OnlineTranscriptLinks"></ul>
+
+            </li>
+            <li class="has-sub-menu"><a >
+                <div class="icon-w">
+                    <div class="os-icon os-icon-users"></div>
+                </div><span class="text-uppercase">Certificate Check</span>
+            </a>
+                <ul class="sub-menu" th:replace="/modules/frontend/fragments/__fragment_mod_nav_links :: CertificateCheckLinks"></ul>
+
+            </li>
+            <li class="has-sub-menu"><a >
+                <div class="icon-w">
+                    <div class="os-icon os-icon-edit-32"></div>
+                </div><span class="text-uppercase">UME Exam Schedule</span>
+            </a>
+                <ul class="sub-menu" th:replace="/modules/frontend/fragments/__fragment_mod_nav_links :: PUMEScheduleLinks"></ul>
+
+            </li>
+
+        </ul>
+
+        <div class="mobile-menu-magic" >
+            <div th:replace="/modules/frontend/fragments/__fragment_mod_nav_ads :: MenuAdsSpace"></div>
+        </div>
+    </div>
+</div>
+<!--------------------END - Mobile Menu-------------------->
+</body>
+</html>

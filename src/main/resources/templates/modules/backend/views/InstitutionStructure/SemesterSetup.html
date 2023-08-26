@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{modules/backend/layouts/master}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title>SEMESTER SETUP  </title>
+</head>
+<body>
+<div>
+    <ul layout:fragment="breadcrumbs" class="breadcrumb" >
+        <li class="breadcrumb-item"><a th:href="@{/SLMS/Dashboard}">Admin</a></li>
+        <li class="breadcrumb-item"><a href="#"> Institution Structure</a></li>
+        <li class="breadcrumb-item"><a th:href="@{/SLMS/InstitutionStructure/SemesterSetup}"> Semester Setup</a></li>
+    </ul>
+</div>
+
+<div layout:fragment="content">
+
+    <div class="content-box">
+        <div class="element-wrapper">
+            <h6 class="element-header text-uppercase">SEMESTER SETUP</h6>
+
+            <div class="element-box">
+
+                <div class="element-box-content">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label > Semester Description </label>
+                            <input type="text" id="txtSemesterDescription" class="form-control validateInput" placeholder=" Enter Semester Description">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label > Semester Hierarchy </label>
+                            <input type="number" id="txtSemesterHierarchy" class="form-control validateInput" min="1">
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-sm btn-primary" id="btnAddSemesterDescription"> Add + </button>
+                    </div>
+
+                    <form th:action="@{/SLMS/InstitutionStructure/SemesterSetup}" method="post" th:object="${semesterDTO}">
+
+                        <div class="row" style="display: none" id="divShowSemester">
+                            <div class="table-responsive table col-6">
+                                <table class="table-bordered table-striped table" id="tblSemester">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col-5">Semester Description</th>
+                                        <th scope="col-5">Hierarchy</th>
+                                        <th scope="col-2"></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+
+                            <div class="col">
+                                <button type="submit" class="btn btn-md btn-primary" id="btnSaveSemester" > Save  <i class="fa fa-download" aria-hidden="true"></i> </button>
+                            </div>
+
+                        </div>
+
+                    </form>
+
+
+
+                </div>
+            </div>
+
+
+            <div class="element-box">
+                <div class="table-responsive table">
+                    <table class=" table-striped table">
+                        <thead>
+                        <tr class="text-left">
+                            <th scope="col-8" >Description</th>
+                            <th scope="col-2" >Hierarchy</th>
+                            <th scope="col-2" ></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="text-left" th:each="semester : ${semesters}">
+                            <td th:text="${semester.description}">Faculty</td>
+                            <td th:text="${semester.hierarchy}">1</td>
+                            <td>
+                                <button type="button"  class="edit-modal mb-xs mt-xs mr-xs modal-basic btn btn-primary"
+                                        th:inline="text"
+                                        data-toggle="modal"
+                                        data-target="#editModal"
+                                        th:attr="data-id=${semester.id},data-description=${semester.description},data-hierarchy=${semester.hierarchy}">
+
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+
+                                </button>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div layout:fragment="body_modal">
+
+        <form th:action="@{/SLMS/InstitutionStructure/SemesterSetup/Edit}" method="post" th:object="${semesterDTO}">
+            <div aria-hidden="true" aria-labelledby="myLargeModalLabel" id="editModal" class="modal fade" role="dialog" tabindex="-1" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">SEMESTER SETUP</h5>
+                            <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"> &times;</span></button>
+                        </div>
+                        <div class="modal-body">
+
+
+                            <div class="row">
+                                <div class="form-group mt-lg col-lg-4">
+                                    <label for="semesterDescriptionEdit">Semester Description</label>
+                                    <input type="text" id="semesterDescriptionEdit" th:field="*{description}" class="form-control" value="" required/>
+                                </div>
+                                <div class="form-group mt-lg col-lg-4">
+                                    <label for="semesterHierarchyEdit" >Semester Hierarchy</label>
+                                    <input type="number" id="semesterHierarchyEdit" th:field="*{hierarchy}"  class="form-control" value="" min="1" max="5" />
+                                </div>
+                                <input type="hidden" id="semesterIdEdit" th:field="*{id}" value="">
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-dismiss="modal" type="button"> Close</button>
+                            <button class="btn btn-primary" type="submit"> Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+<div layout:fragment="body_custom_script">
+
+    <script type="text/javascript" th:src="@{/assets/backend/custom/js/InstitutionStructure_Js/SemesterSetup.js}"></script>
+    <script type="text/javascript" th:if="${message}" th:inline="javascript">
+        PNotify.alert({
+            text: /*[[${message}]]*/ 'Success',
+            type: 'success'
+        });
+    </script>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+.spinner-custom-space{
+    margin-top: 4em;
+}
+.custom-space{
+    margin-top: 3em;
+}
+.custom-space-2{
+    margin-top: 2em;
+}
+.input-file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.input-file:focus + label,
+.input-file + label:hover {
+    /*background-color: whitesmoke;*/
+}
+
+.input-file + label {
+    cursor: pointer;
+}
+
+.input-file:focus + label{
+    /*outline: 1px dotted #000;*/
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.p-custom-size{
+    font-size: 18px;
+}
+.th-size{
+    font-size: medium;
+}
+.modal-static {
+    position: fixed;
+    top: 50% !important;
+    left: 50% !important;
+    margin-top: -100px;
+    margin-left: -100px;
+    overflow: visible !important;
+}
+.modal-static,
+.modal-static .modal-dialog,
+.modal-static .modal-content {
+    width: 200px;
+    height: 200px;
+}
+.modal-static .modal-dialog,
+.modal-static .modal-content {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.modal-static .modal-content .icon {
+}
+
+.error{
+    /*border-color: #ff0000;*/
+    border-color: #ff000070;
+}
+
+table {
+    max-width: 100%;
+    white-space: nowrap;
+    padding: 25px;
+}
+th{
+    font-size: large;
+}
+.custom-pointer{
+    cursor: pointer;
+}
+
+.c-pad{
+    padding-right: 25px;
+}
+.rm-btn-padding{
+    padding: 0px;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    /* We hide the overlay by default */
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s;
+}
+/* This CSS class will show the overlay */
+#overlay.show {
+    visibility: visible;
+    opacity: 1;
+}
+#o-text {
+    margin: 10% auto 0 auto;
+    max-width: 300px;
+    z-index: 1000;
+    padding: 10px;
+    background: #fff;
+    text-align: center;
+    font-size: 1.5em;
+
+}
+
+#back-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1050;
+    /* We hide the overlay by default */
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+#back-overlay.show {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/*phones*/
+@media only screen and (max-width: 600px) {
+    #o-text  {
+        max-width: 300px;
+        z-index: 1000;
+        padding: 10px;
+        background: #fff;
+        text-align: center;
+        font-size: 1.5em;
+        position: initial;
+        margin-top: 222px;
+    }
+}
+
+
+

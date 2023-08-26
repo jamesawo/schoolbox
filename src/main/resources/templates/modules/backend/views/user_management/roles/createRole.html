@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{modules/backend/layouts/master}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title>Add Role</title>
+</head>
+<body>
+<div>
+    <ul layout:fragment="breadcrumbs" class="breadcrumb" >
+        <li class="breadcrumb-item"><a th:href="@{/SLMS/Dashboard}">Admin</a></li>
+        <li class="breadcrumb-item"><a th:href="@{/SLMS/UserManagement/Roles}">Roles</a></li>
+        <li class="breadcrumb-item"><a >Add Role</a></li>
+    </ul>
+</div>
+
+<div layout:fragment="content">
+
+    <div class="content-box">
+        <div class="element-wrapper">
+            <h6 class="element-header">Add Role</h6>
+
+            <form th:action="@{/SLMS/UserManagement/Role/Create}"  method="post" th:object="${roleRequest}">
+
+                <div class="element-box">
+                    <label > Information</label>
+                    <div class="row">
+
+                        <div class="form-group col-md-4">
+                            <label><stron>Role Name</stron></label>
+                            <input type="text" name="name" class="form-control text-uppercase" required>
+
+                        </div>
+
+
+
+                        <div class="form-group col-md-8">
+                            <label><stron>Role Description</stron></label>
+                            <input type="text" name="description" class="form-control text-uppercase" required>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-responsive custom-space" th:each="pGroup : ${permissionGroupByModule}" >
+
+                        <label class="text-bold-700" th:text="${pGroup.key}">*SLMS.ResultManager Feature Module</label>
+
+                        <table  width="100%" class="table table-striped table-lightfont">
+                            <thead>
+                            <tr>
+                                <th class="col-md-10">Permission</th>
+                                <th class="col-md-2">Allow?</th>
+
+                            </tr>
+                            </thead>
+
+                            <tbody>
+
+                            <tr th:each="permission : ${pGroup.value}">
+                                <td class="col-md-11" th:text="${permission.name}">Access admin panel</td>
+                                <td class="col-sm-1"><input type="checkbox" th:field="*{permissions}" th:value="${permission.id}"></td>
+
+                            </tr>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                    <button class="btn btn-md btn-primary custom-space">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<script layout:fragment="body_custom_script" type="text/javascript">
+</script>
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{modules/backend/layouts/master}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title> SYSTEM PERFORMANCE  </title>
+</head>
+<body>
+<div>
+    <ul layout:fragment="breadcrumbs" class="breadcrumb">
+        <li class="breadcrumb-item"><a th:href="@{/Admin/Dashboard}">ADMIN</a></li>
+        <li class="breadcrumb-item"><a href="#"> SYSTEM PERFORMANCE  </a></li>
+    </ul>
+</div>
+
+<div layout:fragment="content">
+
+    <div class="content-box container">
+        <div class="element-wrapper">
+            <h6 class="element-header text-uppercase"> INSTALL TEST DATA  </h6>
+
+            <div class="element-box">
+                <div class="element-box-content">
+
+                    <form  autocomplete="off">
+
+                        <div class="row">
+
+                            <div class="form-group col-md-4">
+                                <label> Student Name  </label>
+                                <input type="text" id="txtStudentName"   class="form-control validateText">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label> Registration Number  </label>
+                                <input type="text" id="txtStudentRegNumber"  name="regNumber" class="form-control validateText" placeholder="Registration Number Search.. ">
+                                <input type="hidden" id="txtStudentRegNumberHidden" name="id" value="0">
+
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col form-group">
+                                <button class="btn btn-md btn-primary" id="btnSingleSearch">  <i class="fa fa-search-plus" aria-hidden="true"></i> Single Search </button>
+                                <button class="btn btn-md btn-primary" id="btnMultipleSearch">  <i class="fa fa-search-plus" aria-hidden="true"></i> Multiple Search </button>
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <div class="row">
+
+                        <div class="col form-group">
+                            <button class="btn btn-md btn-primary">  <i class="fa fa-search-plus" aria-hidden="true"></i> Demographic Report PDF </button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="element-box">
+
+                <div class="row">
+
+                    <div class="col-5 form-group">
+                        <button class="btn btn-md btn-primary" id="btnAddNewStudent">  <i class="fa fa-plus-square" aria-hidden="true"></i> Add New Student </button>
+
+
+                        <input type="file" name="passport" id="file" class="input-file" />
+                        <label for="file" class="btn btn-md btn-primary text-center"><i class="fa fa-plus-square" aria-hidden="false"> </i> <span> Select File </span> </label>
+
+                        <button class="btn btn-md btn-primary">  <i class="fa fa-upload" aria-hidden="true"></i> </button>
+                    </div>
+
+
+
+                    <div class="col form-group">
+                        <button class="btn btn-md btn-primary" >  <i class="fa fa-toggle-on" aria-hidden="true"></i> Activate </button>
+                        <button class="btn btn-md btn-primary" >  <i class="fa fa-toggle-off" aria-hidden="true"></i> Deactivate </button>
+                        <button class="btn btn-md btn-primary" >  <i class="fa fa-download" aria-hidden="true"></i> Download Template </button>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-md btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Export</button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">EXCEL</a>
+                                <a class="dropdown-item" href="#">PDF</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="table-responsive-sm">
+
+                    <div  class="dataTables_wrapper">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6">
+                                <div class="dataTables_length" id="usersTable_length"><label>Show <select name="usersTable_length" aria-controls="usersTable" class="custom-select custom-select-sm form-control form-control-sm">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select> entries</label></div>
+                            </div>
+                            <!--                            <div class="col-sm-12 col-md-6">-->
+                            <!--                                <div id="usersTable_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="usersTable"></label></div>-->
+                            <!--                            </div>-->
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12" style="overflow-x:auto;">
+                                <table class="table table-striped table-bordered table-hover"  id="studentSearchResultTable">
+
+                                    <thead style="font-size: large">
+                                    <tr class="text-left">
+                                        <th scope="col"><input type="checkbox" id="chkStatusHeader"></th>
+                                        <th></th>
+                                        <th scope="col" class="text-center"> COURSE OF STUDY </th>
+                                        <th scope="col" class="text-center"> PROGRAMME TYPE </th>
+                                        <th scope="col" class="text-center"> SURNAME </th>
+                                        <th scope="col" class="text-center"> FIRST NAME </th>
+                                        <th scope="col" class="text-center"> LAST NAME </th>
+                                        <th scope="col" class="text-center"> REG NUMBER  </th>
+                                        <th scope="col" class="text-center"> APPLICATION NUMBER  </th>
+                                        <th scope="col" class="text-center"> EMAIL  </th>
+                                        <th scope="col" class="text-center"> LEVEL </th>
+                                        <th scope="col" class="text-center"> GENDER </th>
+                                        <th scope="col" class="text-center"> STATE </th>
+                                        <th scope="col" class="text-center"> ENTRY TYPE </th>
+                                        <th scope="col" class="text-center"> MOBILE </th>
+                                        <th scope="col" class="text-center"> JAMB REG. </th>
+                                        <th scope="col" class="text-center"> STATUS </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="col">
+
+                                    <tr class="text-left" th:if="${searchResult}" th:each="result : ${searchResult}">
+                                        <td><input type="checkbox" class="chkStatus"></td>
+                                        <td>
+                                            <a th:href="@{/SLMS/StudentManagement/Student/Edit/{id}(id=${result.id})}" class="btn btn-sm btn-primary btnEdit">
+                                                <i class="fa fa-edit" aria-hidden="true"></i>
+                                            </a>
+                                        </td>
+                                        <td class="text-left" th:text="${result.courseOfStudy}"></td>
+                                        <td class="text-left" th:text="${result.programmeType}"></td>
+                                        <td class="text-center" th:text="${result.surname}"></td>
+                                        <td class="text-center" th:text="${result.firstName}"></td>
+                                        <td class="text-center" th:text="${result.lastName}"></td>
+                                        <td class="text-center" th:text="${result.regNumber}"></td>
+                                        <td class="text-center" th:text="${result.applicationNumber}"></td>
+                                        <td class="text-left" th:text="${result.email}"></td>
+                                        <td class="text-center" th:text="${result.level}"></td>
+                                        <td class="text-center" th:text="${result.gender}"></td>
+                                        <td class="text-center" th:text="${result.state}"></td>
+                                        <td class="text-center" th:text="${result.entryType}"></td>
+                                        <td class="text-center" th:text="${result.phone}"></td>
+                                        <td class="text-center" th:text="${result.jambReg}"></td>
+                                        <td class="text-center" th:class="${result.status == true} ? 'text-success':'text-danger'" th:text="${result.status == true}? 'Active' : 'Inactive' "></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-5">
+                                <div class="dataTables_info" id="usersTable_info" role="status" aria-live="polite">Showing 1 to 10 of 10 entries</div>
+                            </div>
+                            <div class="col-sm-12 col-md-7">
+                                <div class="dataTables_paginate paging_simple_numbers" id="usersTable_paginate">
+                                    <ul class="pagination">
+                                        <li class="paginate_button page-item previous disabled" id="usersTable_previous"><a href="#" aria-controls="usersTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                                        <li class="paginate_button page-item active"><a href="#" aria-controls="usersTable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                        <li class="paginate_button page-item next disabled" id="usersTable_next"><a href="#" aria-controls="usersTable" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div layout:fragment="body_modal">
+        <form>
+            <div aria-hidden="true" aria-labelledby="myLargeModalLabel" id="createAddNewStudentModal" class="modal fade" role="dialog" tabindex="-1" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title">-</h5>
+                            <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"> &times;</span></button>
+                        </div>
+
+                        <div class="modal-body">
+
+                            <h6 class="text-uppercase">Install Test Data</h6>
+                            <hr>
+                            <div class="row">
+
+                                <div class="form-group mt-lg col-lg-12">
+                                    <h3>Automate  Installation</h3>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-dismiss="modal" type="button"> Close</button>
+                            <button class="btn btn-primary" type="submit" id="btnSaveSpecificFee"> Save changes</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<div layout:fragment="body_custom_script">
+<!--    <script type="text/javascript" th:src="@{/assets/backend/custom/js/StudentManagement/StudentManagement.js}"></script>-->
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+</head>
+<body>
+
+<!--------------------START - Top Bar-------------------->
+<div th:fragment="body_top_nav" class="top-bar color-scheme-transparent">
+    <!--------------------START - Top Menu Controls-------------------->
+    <div class="top-menu-controls">
+        <div class="element-search autosuggest-search-activator"><input placeholder="Start typing to search..." type="text"></div>
+
+        <!--------------------START - Settings Link in secondary top menu-------------------->
+        <div class="top-icon top-settings os-dropdown-trigger os-dropdown-position-left"><i class="os-icon os-icon-ui-46"></i>
+            <div class="os-dropdown">
+                <div class="icon-w"><i class="os-icon os-icon-ui-46"></i></div>
+                <ul>
+                    <li><a target="_blank" href="/"><i class="os-icon os-icon-ui-49"></i><span>Student Facing</span></a></li>
+                    <li><a th:href="@{/SLMS/UserManagement/Password/ResetPassword}"><i class="os-icon os-icon-ui-49"></i><span>Change Password</span></a></li>
+                    <li><a href="/logout" th:href="@{/logout}"><i class="os-icon os-icon-ui-15"></i><span>Logout</span></a></li>
+                </ul>
+            </div>
+        </div>
+        <!--------------------END - Settings Link in secondary top menu-------------------->
+
+    </div>
+    <!--------------------END - Top Menu Controls-------------------->
+</div>
+
+</body>
+</html>

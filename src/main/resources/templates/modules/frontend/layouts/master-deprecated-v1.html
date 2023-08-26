@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <meta content="template language" name="keywords">
+    <meta content="College Portal" name="author">
+    <meta content="Welcome to (College Portal) Student Learning Management System" name="description">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <link th:href="@{/assets/backend/default/fav.png}" rel="shortcut icon">
+    <link th:href="@{/assets/backend/default/ico.png}" rel="apple-touch-icon">
+
+    <link th:href="@{/assets/backend/default/css/fast.css?version=4.4.2}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/backend/default/bower_components/select2/dist/css/select2.min.css}"  rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/backend/default/bower_components/bootstrap-daterangepicker/daterangepicker.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/backend/default/bower_components/dropzone/dist/dropzone.css}" rel="stylesheet" type="text/css">
+
+    <link th:href="@{/assets/backend/default/bower_components/fullcalendar/dist/fullcalendar.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/backend/default/bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/backend/default/bower_components/slick-carousel/slick/slick.css}" rel="stylesheet" type="text/css">
+    <link th:href="@{/assets/backend/default/css/maince5a.css?version=4.4.2}" rel="stylesheet" type="text/css">
+
+    <!-- Custom Css -->
+    <link  th:href="@{/assets/backend/custom/css/custom.css}" rel="stylesheet" type="text/css" >
+    <link th:href="@{/assets/common/node_modules/pnotify/dist/PNotifyBrightTheme.css}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" th:href="@{/assets/common/DataTables/datatables.min.css}">
+    <link rel="stylesheet" th:href="@{/assets/common/css/font-awesome-4.7.0/css/font-awesome.min.css}" >
+
+    <title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE"> College Portal </title>
+
+<!--    <style>-->
+<!--        .MultiCarousel { float: left; overflow: hidden; padding: 15px; width: 100%; position:relative; }-->
+<!--        .MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left; }-->
+<!--        .MultiCarousel .MultiCarousel-inner .item { float: left;}-->
+<!--        .MultiCarousel .MultiCarousel-inner .item > div { text-align: center; padding:10px; margin:10px; background:#f1f1f1; color:#666;}-->
+<!--        .MultiCarousel .leftLst, .MultiCarousel .rightLst { position:absolute; border-radius:50%;top:calc(50% - 20px); }-->
+<!--        .MultiCarousel .leftLst { left:0; }-->
+<!--        .MultiCarousel .rightLst { right:0; }-->
+
+<!--        .MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#ccc; }-->
+<!--    </style>-->
+
+</head>
+<body >
+
+<body class="white rentals-wrapper full-screen">
+<div class="all-wrapper rentals">
+
+    <!--------------------START - Top Bar ------------------->
+    <div th:insert="modules/frontend/fragments/_fragment_body_top_bar :: body_top_bar"></div>
+
+    <!--------------------END - Top bar-------------------->
+
+    <!--------------------START - Rentals Content-------------------->
+    <div class="rentals-list-w">
+
+        <!--------------------START - Property Index Filters- Left side bar------------------->
+        <div th:insert="modules/frontend/fragments/_fragment_body_main_side_menu :: body_main_side_menu"></div>
+        <!--------------------END - Property Index Filters--- left side bar----------------->
+
+        <div class="rentals-list">
+            <div class="list-controls">
+                <div class="list-info"></div>
+                <div class="list-order"><label></label><select>
+                    <option>Relevance</option>
+                    <option>Date</option>
+                    <option>Module</option>
+                </select></div>
+            </div>
+
+            <!-- Main Content-->
+            <div layout:fragment="content">
+
+            </div>
+
+            <!-- End main content -->
+            <!-- Pagination View -->
+        </div>
+
+    </div>
+    <!--------------------END - Rentals Content-------------------->
+    <!--------------------START - Footer-------------------->
+<!--    <div th:insert="modules/frontend/fragments/_fragment_body_footer_top :: body_footer_top"></div>-->
+
+    <div th:insert="modules/frontend/fragments/_fragment_body_footer_bottom :: body_footer_bottom"></div>
+
+    <!--------------------END - Footer-------------------->
+</div>
+<div class="display-type"></div>
+</body>
+
+<!--Inc. Page Scripts-->
+<script th:src="@{/assets/backend/default/bower_components/jquery/dist/jquery.min.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/popper.js/dist/umd/popper.min.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/moment/moment.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/chart.js/dist/Chart.min.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/select2/dist/js/select2.full.min.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/jquery-bar-rating/dist/jquery.barrating.min.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/ckeditor/ckeditor.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/bootstrap-validator/dist/validator.min.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/bootstrap-daterangepicker/daterangepicker.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/ion.rangeSlider/js/ion.rangeSlider.min.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/dropzone/dist/dropzone.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/editable-table/mindmup-editabletable.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/datatables.net/js/jquery.dataTables.min.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/fullcalendar/dist/fullcalendar.min.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/slick-carousel/slick/slick.min.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/bootstrap/js/dist/util.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/bootstrap/js/dist/alert.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/bootstrap/js/dist/button.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/bootstrap/js/dist/carousel.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/bootstrap/js/dist/collapse.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/bootstrap/js/dist/dropdown.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/bootstrap/js/dist/modal.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/bootstrap/js/dist/tab.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/bootstrap/js/dist/tooltip.js}"></script>
+<script th:src="@{/assets/backend/default/bower_components/bootstrap/js/dist/popover.js}"></script>
+<script th:src="@{/assets/backend/default/js/demo_customizerce5a.js?version=4.4.1}"></script>
+<script th:src="@{/assets/backend/default/js/maince5a.js?version=4.4.1}"></script>
+<script th:src="@{/assets/backend/default/js/main_rentalsce5a.js?version=4.4.1}"></script>
+
+<script type="text/javascript" th:src="@{/assets/common/node_modules/pnotify/dist/iife/PNotify.js}"></script>
+<script type="text/javascript" th:src="@{/assets/common/node_modules/pnotify/dist/iife/PNotifyButtons.js}"></script>
+<script type="text/javascript" th:src="@{/assets/common/DataTables/datatables.min.js}" ></script>
+<script type="text/javascript" th:src="@{/assets/common/js/bootstrap-filestyle-2.1.0/src/bootstrap-filestyle.min.js}"> </script>
+
+<!--Custom Page Script Resource-->
+<div layout:fragment="body_custom_script">
+</div>
+
+</body>
+</html>

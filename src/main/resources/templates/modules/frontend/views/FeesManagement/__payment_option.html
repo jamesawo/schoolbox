@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="row form-group" th:fragment="PaymentMethod(paymentOptions)">
+    <div class="col-sm-12 col-md-6 col-lg-6">
+        <div class="form-group">
+            <label class="text-sm-left text-uppercase">  Settlement / Payment Method</label>
+            <select  class="form-control selPaymentOption" id="selPaymentOption">
+                <option disabled> Select Method </option>
+                <option th:each="data: ${paymentOptions}"
+                        th:value="${data.id}"
+                        th:text="${data.description}"
+                        th:attr="data-type=${data.type}"> Select Method </option>
+
+            </select>
+        </div>
+
+        <button class="btn btn-primary btn-md" type="button" id="btnSettleFee">Settle Fee</button>
+    </div>
+
+</div>
+</body>
+</html>

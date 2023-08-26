@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+     <!--  Admission Parameter Setup  -->
+    <ul th:fragment="ApplicationParameterSetup_links" class="sub-menu">
+        <li><a href="#">Admission Management</a></li>
+        <li><a href="#">Provisional Admission List Generator<strong class="badge badge-danger">Hot</strong></a></li>
+        <li><a href="#">Application List Generator</a></li>
+        <li><a href="#">Exam Schedule</a></li>
+        <li><a href="#">Certificate Check Data</a></li>
+    </ul>
+
+    <!-- Application-->
+     <ul th:fragment="Application_links" class="sub-menu">
+         <li><a href="#">View Application</a></li>
+     </ul>
+
+     <!--     Course Management-->
+     <ul th:fragment="CourseManagement_links" class="sub-menu">
+         <li><a th:href="@{/SLMS/CourseManagement/CourseCreation}">Course Creation</a></li>
+         <li><a th:href="@{/SLMS/CourseManagement/CourseAllocationSetup}">Course Allocation Setup</a></li>
+         <li><a th:href="@{/SLMS/CourseManagement/ViewAllocatedCourses}">View Allocated Courses</a></li>
+         <li><a th:href="@{/SLMS/CourseManagement/CourseAllocationToLecturer}">Course Allocation to Lecturer</a></li>
+         <li><a th:href="@{/SLMS/CourseManagement/CoursePreRequisite}">Course Pre-requisite</a></li>
+         <li><a th:href="@{/SLMS/CourseManagement/SubmittedCourseRegistration}">Submitted Course Registration</a></li>
+         <li><a th:href="@{/SLMS/CourseManagement/LecturerApprovedCourseList}">Lecturer Approved Course List</a></li>
+         <li><a th:href="@{/SLMS/CourseManagement/FeeToCourseAllocation}">Fee To Course Allocation</a></li>
+     </ul>
+
+     <!--     Admission Parameter Setup-->
+     <ul th:fragment="AdmissionParameterSetup_links" class="sub-menu">
+         <li><a href="#">Admission Management</a></li>
+         <li><a href="#">Provisional Admission List Generator</a></li>
+         <li><a href="#">Application List Generator</a></li>
+         <li><a href="#">Exam Schedule</a></li>
+         <li><a href="#">Certificate Check Data</a></li>
+     </ul>
+
+     <!--     Course Requirement Setup-->
+     <ul th:fragment="CourseRequirementSetup_links" class="sub-menu">
+         <li><a href="#">Requirement Setting</a></li>
+         <li><a href="#">Course Band</a></li>
+     </ul>
+
+
+     <!--     Fees Management-->
+     <ul th:fragment="FeesManagement_links" class="sub-menu">
+         <li><a th:href="@{/SLMS/FeeManagement/FeeCategorySetup}">Fees Category Setup</a></li>
+         <li><a th:href="@{/SLMS/FeeManagement/SpecificFeeCreation}">Specific Fee Creation (SFC)</a></li>
+         <li><a th:href="@{/SLMS/FeeManagement/FeeReportView}"> Fee Report</a></li>
+         <li><a th:href="@{/SLMS/FeeManagement/DependentFeeSetup}"> Dependent Fee View</a></li>
+     </ul>
+
+     <!--     Global Settings-->
+     <ul th:fragment="GlobalSettings_links" class="sub-menu">
+         <li><a th:href="@{/SLMS/GlobalSetting/ManageSpecialEffects}" > Manage Special Effect</a></li>
+     </ul>
+
+     <!--     Institution Structure Setup-->
+     <ul th:fragment="InstitutionStructureSetup_links" class="sub-menu">
+         <li><a th:href="@{/SLMS/InstitutionStructure/CategoryNameSetup}"> Category Names Setup</a></li>
+         <li><a th:href="@{/SLMS/InstitutionStructure/Setup_Institution_Structure}" > Setup Institution Structure</a></li>
+         <li><a th:href="@{/SLMS/InstitutionStructure/LevelSetup}" >  Level Setup</a></li>
+         <li><a th:href="@{/SLMS/InstitutionStructure/ProgrammeTypeSetup}"> Programme Type Setup</a></li>
+         <li><a th:href="@{/SLMS/InstitutionStructure/CourseOfStudyDuration}"> Course of Study Duration Setup</a></li>
+         <li><a th:href="@{/SLMS/InstitutionStructure/SemesterSetup}"> Semester Setup</a></li>
+         <li><a th:href="@{/SLMS/InstitutionStructure/SessionSetup}">  Session Setup</a></li>
+         <li><a th:href="@{/SLMS/InstitutionStructure/ApplicationSessionView}"> Application Session View</a></li>
+         <li><a th:href="@{/SLMS/InstitutionStructure/LevelHistory}"> Level History </a></li>
+     </ul>
+
+     <!--     Know Your Ward Management-->
+     <ul th:fragment="KnowYourManagement_links" class="sub-menu">
+         <li><a href="#"> Manage Guardian</a></li>
+     </ul>
+
+     <!--     Library Management-->
+     <ul th:fragment="LibraryManagement_links" class="sub-menu">
+         <li><a href="#"> Register Book</a></li>
+         <li><a href="#"> Lend Book</a></li>
+         <li><a href="#"> Book Track</a></li>
+         <li><a href="#"> Library Clearance</a></li>
+     </ul>
+
+     <!--      Manage Non Student-->
+     <ul th:fragment="ManageNonStudent_links" class="sub-menu">
+         <li><a href="#"> Non Student View</a></li>
+     </ul>
+
+     <!--      Result Manager-->
+     <ul th:fragment="ResultManager_links" class="sub-menu">
+         <li><a href="#"> Result View and Upload</a></li>
+         <li><a href="#">Grade and Weight Setup</a></li>
+         <li><a href="#">CGPA Mapping Setup</a></li>
+         <li><a href="#">Attend Result Modification Request</a></li>
+         <li><a href="#">Result Modification Request Status</a></li>
+         <li><a href="#">Transcript Result Setup</a></li>
+     </ul>
+
+     <!--      Staff Manager-->
+     <ul th:fragment="StaffManager_links" class="sub-menu">
+         <li><a href="#"> Staff Assignment To Role</a></li>
+         <li><a href="#">Setup User Profile</a></li>
+     </ul>
+
+     <!--      Student Management-->
+     <ul th:fragment="StudentManagement_links" class="sub-menu">
+         <li><a th:href="@{/SLMS/StudentManagement/StudentManagementView}">Manage Students</a></li>
+         <li><a th:href="@{/SLMS/StudentManagement/StudentRegNoUploadView}">Upload Reg. Number</a></li>
+     </ul>
+
+     <!--      Transcript Management-->
+     <ul th:fragment="TranscriptManagement_links" class="sub-menu">
+         <li><a href="#">Transcript Application View</a></li>
+     </ul>
+
+     <!--      User Management-->
+     <ul th:fragment="UserManagement_links" class="sub-menu">
+         <li><a th:href="@{/SLMS/UserManagement/Users}">Manage Users</a></li>
+         <li><a th:href="@{/SLMS/UserManagement/Roles}">Manage Roles</a></li>
+         <li><a th:href="@{/SLMS/UserManagement/Password}">Manage Passwords</a></li>
+     </ul>
+
+     <!--      System Performance-->
+     <ul th:fragment="SystemPerformance_links" class="sub-menu">
+         <li><a href="#">Run Diagnose</a></li>
+         <li><a href="#">Health Report</a></li>
+         <li><a th:href="@{/SLMS/SystemPerformance/AutomateInstallation/StartProcess}">Automate Installation</a></li>
+     </ul>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+
+</head>
+<body>
+
+<!--------------------START - Top Bar-------------------->
+<div th:fragment="body_top_nav" class="top-bar color-scheme-transparent">
+    <!--------------------START - Top Menu Controls-------------------->
+    <div class="top-menu-controls">
+<!--        <div class="element-search autosuggest-search-activator">-->
+<!--            <input placeholder="Start typing to search..." type="text">-->
+<!--        </div>-->
+
+        <!--------------------START - Settings Link in secondary top menu-------------------->
+
+
+        <ul class="nav navbar-nav float-right">
+
+
+            <li class="nav-item "><a class="nav-link" th:href="@{/SLMS/Dashboard}" href="/SLMS/Dashboard" sec:authorize="hasAnyAuthority('SUPER_ADMIN, ACCESS_ADMIN_PANEL')">DASHBOARD</a></li>
+            <li class="nav-item "><a class="nav-link" th:href="@{/login}" href="/login"   sec:authorize="isAnonymous()"  >LOGIN</a></li>
+            <li class="nav-item" sec:authorize="isAuthenticated()"><a class="nav-link text-primary text-uppercase" sec:authentication="name"></a> </li>
+
+            <li class="nav-item ">
+
+                <!-- Image Profile -->
+
+                <div class="logged-user-w nav-item os-dropdown-trigger os-dropdown-position-left" sec:authorize="isAuthenticated()">
+                    <div class="logged-user-i">
+                        <div class="avatar-w"><img alt="" th:src="@{/assets/images/res/default-avatar.png}" ></div>
+                        <div class="logged-user-menu color-style-bright">
+                            <div class="logged-user-avatar-info">
+                                <div class="avatar-w"><img alt="" th:src="@{/assets/images/res/default-avatar.png}" ></div>
+                                <div class="logged-user-info-w">
+                                    <div class="logged-user-name" sec:authentication="name">User</div>
+                                    <div class="logged-user-role" ><em>Logged In</em></div>
+                                </div>
+                            </div>
+                            <div class="bg-icon"><i class="os-icon os-icon-wallet-loaded"></i></div>
+                            <ul sec:authorize="hasAuthority('ACCESS_STUDENT_PROFILE')">
+                                <li>
+                                    <a th:href="@{/StudentFacing/StudentManagement/StudentProfileView}">
+                                        <i class="os-icon os-icon-user-male-circle2"></i><span>Profile</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/StudentFacing/UserManagement/ChangePassword}">
+                                        <i class="os-icon os-icon-settings"></i><span>Password</span>
+                                    </a>
+                                </li>
+
+                                <li><a href="/logout" th:href="@{/logout}"><i class="os-icon os-icon-signs-11"></i><span>Logout</span></a></li>
+                            </ul>
+
+                            <ul sec:authorize="hasAnyAuthority('SUPER_ADMIN, ACCESS_ADMIN_PANEL')">
+
+                                <li>
+                                    <a th:href="@{/SLMS/UserManagement/Password/ResetPassword}">
+                                        <i class="os-icon os-icon-settings"></i><span>Password</span>
+                                    </a>
+                                </li>
+
+                                <li><a href="/logout" th:href="@{/logout}"><i class="os-icon os-icon-signs-11"></i><span>Logout</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Image Profile-->
+            </li>
+
+        </ul>
+
+        <!--------------------END - Settings Link in secondary top menu-------------------->
+
+    </div>
+    <!--------------------END - Top Menu Controls-------------------->
+</div>
+
+</body>
+</html>

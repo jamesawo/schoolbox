@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{modules/backend/layouts/master}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title> UPDATE STUDENT PROFILE </title>
+</head>
+<body>
+<div>
+    <ul layout:fragment="breadcrumbs" class="breadcrumb">
+        <li class="breadcrumb-item"><a th:href="@{/SLMS/Dashboard}">ADMIN</a></li>
+        <li class="breadcrumb-item"><a href="#"> UPDATE STUDENT PROFILE </a></li>
+    </ul>
+</div>
+
+<div layout:fragment="content">
+
+    <div class="content-box container">
+        <div class="element-wrapper">
+
+            <h6 class="element-header text-uppercase"> UPDATE STUDENT PROFILE  </h6>
+
+            <form th:action="@{/SLMS/StudentManagement/Student/Edit/}" method="Post" th:object="${studentProfileDTO}" enctype="multipart/form-data">
+
+                <input type="hidden" th:field="*{id}">
+
+                <h6 class="element-header"> Student Profile </h6>
+                <div class="element-box">
+                    <div class="element-box-content">
+                        <div class="row">
+                            <div class="col-md-4 form-group text-center">
+                                <div class="row">
+                                    <div class="col-md-12"></div>
+                                    <div class="col-md-12 img-fluid" style="margin-top: 2em">
+
+                                        <img  class="center-block img imgPassport"
+                                              th:if="${studentProfileDTO.passportData == null}"
+                                              th:src="@{/assets/images/res/default-avatar.png}" width="50%"/><br><br>
+
+                                        <img class="center-block img imgPassport  img-thumbnail"
+                                             th:if="${studentProfileDTO.passportData != null}"
+                                             th:src="@{'data:image/jpeg;base64,'+${studentProfileDTO.passportData}}" width="50%"/><br><br>
+
+                                        <label for="file" class="btn btn-md btn-primary text-center"> <i class="fa fa-upload" aria-hidden="true"></i> </label>
+                                        <br>
+
+                                        <input type="file" name="passport" id="file" class="input-file" />
+                                        <label><span></span></label>
+
+                                    </div>
+
+                                    <div class="col-md-12"></div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-8 form-group">
+
+                                <div class="text-left m-t-40">
+
+                                    <div class="row form-group">
+                                        <div class="col-md-3">Reg / Matric Number:</div>
+                                        <div class="col-md-6"><span class="m-l-15 text-primary" th:text="${studentProfileDTO.regNumber}"> Reg Number</span></div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col-md-3">FULL NAME :</div>
+                                        <div class="col-md-6"><span class="m-l-15 text-primary"  th:text="${studentProfileDTO.fullName}"> FIRST NAME </span></div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col-md-3">PROGRAMME TYPE :</div>
+                                        <div class="col-md-6"><span class="m-l-15 text-primary"  th:text="${studentProfileDTO.programmeType}"> PROGRAMME TYPE  </span></div>
+
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col-md-3">ENTRY SESSION :</div>
+                                        <div class="col-md-6"><span class="m-l-15 text-primary" th:text="${studentProfileDTO.session}"> </span></div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col-md-3">CURRENT SESSION :</div>
+                                        <div class="col-md-6"><span class="m-l-15 text-primary" th:text="${studentProfileDTO.currentSession}"> SESSION </span></div>
+                                    </div>
+
+                                    <div class="row form-group" th:each="data : ${studentProfileDTO.programmeOfStudyStructure1.entrySet()}">
+
+                                        <div class="col-md-3" th:text="${data.value[0]} + ' :' ">PROGRAMME TYPE :</div>
+                                        <div class="col-md-6" ><span class="m-l-15 text-primary" th:text="${data.value[1]}"> </span></div>
+
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col-md-3">CURRENT LEVEL :</div>
+                                        <div class="col-md-6"><span class="m-l-15 text-primary" th:text="${studentProfileDTO.level}"> 200 LEVEL</span></div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <h6 class="element-header"> College Information </h6>
+
+                <div class="element-box">
+
+                    <div class="row" th:with="size=${#maps.size(studentProfileDTO.institutionStructureMapData)}">
+
+                        <div class="col-md-4" th:each="data  : ${studentProfileDTO.institutionStructureMapData}" >
+
+                            <div class=" form-group divSelectCategory"  th:with="hierarchy=${data.key}"
+                                 th:each="result  : ${data.value}"
+                                 th:attr="data-number=${hierarchy}"
+                                 th:classAppend=" 'category'+${hierarchy} ">
+
+                                <label th:text="${result.key}" > Category </label>
+
+                                <select class="form-control selCategory"
+                                        th:name="${hierarchy} == ${size} ? 'institutionStructure' "
+                                        th:id="${hierarchy}" th:attr="required=${hierarchy} == ${size} ? 1 ">
+                                    <option value="">Select</option>
+                                    <option th:each="el : ${result.value}"
+                                            th:text="${el[1]}"
+                                            th:value="${el[0]}"
+                                            th:selected="${el[0]} == ${el[2]} ? true ">Description</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label> PROGRAMME CATEGORIES </label>
+                            <select name="programmeCategory"  class="form-control" id="selProgrammeCategory" required>
+                                <option value="">Select</option>
+                                <option th:each="data : ${studentProfileDTO.programmeCategoryList}"
+                                        th:value="${data.id}" th:text="${data.description}"
+                                        th:selected="${data} == ${studentProfileDTO.programmeCategory}?true"></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4" id="divProgrammeType">
+                            <label> PROGRAMME TYPES </label>
+                            <select name="institutionProgrammeType"  class="form-control" id="selProgrammeTypes" required>
+                                <option value="">Select</option>
+                                <option th:each="data : ${studentProfileDTO.institutionProgrammeTypeList}"
+                                        th:value="${data.id}" th:text="${data.description}"
+                                        th:selected="${data} == ${studentProfileDTO.institutionProgrammeType}?true"></option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group col-md-4">
+                            <label> ENTRY TYPE </label>
+                            <select name="studentEntryType"  class="form-control" required>
+                                <option value="">Select</option>
+                                <option th:each="data : ${studentProfileDTO.entryTypeList}"
+                                        th:value="${data.id}" th:text="${data.description}"
+                                        th:selected="${data.description} == ${studentProfileDTO.entryType}?true"></option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label> CURRENT LEVEL </label>
+                            <select name="institutionLevel"  class="form-control" required>
+                                <option value="">Select</option>
+                                <option th:each="data : ${studentProfileDTO.levelList}"
+                                        th:value="${data.id}" th:text="${data.alternative}"
+                                        th:selected="${data.alternative} == ${studentProfileDTO.level}?true"></option>
+
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label> REGISTRATION NUMBER
+                                <small class="text-right">Check to update
+                                <input type="checkbox" id="chkAllowRegNumberUpdate"></small>
+                            </label>
+
+                            <input type="text" class="form-control" id="txtRegNumber" th:field="*{regNumber}" required readonly>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <h6 class="element-header"> Personal Information   </h6>
+
+                <div class="element-box">
+
+                    <div class="row">
+
+                        <div class="form-group col-md-4">
+                            <label> Surname  </label>
+                            <input type="text" class="form-control" th:field="*{surname}" required />
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label> First Name  </label>
+                            <input type="text" class="form-control" th:field="*{firstName}" required />
+
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label> Last Name </label>
+                            <input type="text" class="form-control" th:field="*{lastName}" required>
+                        </div>
+
+                        <div class="form-group col-md-4" >
+                            <label> Date of Birth </label>
+
+                            <input type="text" class="form-control"
+                                   placeholder="MM/DD/YYYY"
+                                   th:field="*{dateOfBirth}"
+                                   onfocus="(this.type='date')"
+                                   onblur="(this.type='text')" required>
+                        </div>
+
+
+
+                        <div class="form-group col-md-4">
+                            <label> Gender </label>
+                            <select class="form-control" th:field="*{gender}" required>
+                                <option value="">Select </option>
+                                <option value="Male" th:selected="${studentProfileDTO.gender } == 'Male' ? true">Male </option>
+                                <option value="Female" th:selected="${studentProfileDTO.gender } == 'Female'? true">Female </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>Marital Status</label>
+                            <select class="form-control" th:field="*{maritalStatus}" required>
+                                <option value="">Select</option>
+                                <option value="Single" th:selected="${studentProfileDTO.maritalStatus } == 'Single' ? true">Single </option>
+                                <option value="Married" th:selected="${studentProfileDTO.maritalStatus } == 'Married' ? true">Married </option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label> Email </label>
+                            <input type="email" class="form-control" th:field="*{email}" required>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label> Phone </label>
+                            <input type="text" class="form-control" th:field="*{phone}" required>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label> Height (m) </label>
+                            <input type="text" class="form-control" th:field="*{height}" required>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>Weight (kg)</label>
+                            <input type="text" class="form-control" th:field="*{weight}" required>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>Country</label>
+                            <select class="form-control" name="studentCountry" required>
+                                <option value="">Select</option>
+                                <option th:each="country : ${countries}" th:value="${country.id}"
+                                        th:text="${country.description}"
+                                        th:selected="${country.description == studentProfileDTO.country}?true">Country</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>State</label>
+                            <select class="form-control" name="studentState" id="selState" required>
+                                <option value="">Select</option>
+                                <option th:each="state : ${states}"
+                                        th:value="${state.id}"
+                                        th:text="${state.description}"
+                                        th:selected="${state.description == studentProfileDTO.state}?true">State</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>LGA</label>
+                            <select class="form-control" name="studentLga" id="selLocals" required>
+                                <option value="">Select</option>
+                                <option th:each="lga : ${studentProfileDTO.lgaList}"
+                                        th:value="${lga.id}"
+                                        th:text="${lga.description}"
+                                        th:selected="${lga.id == studentProfileDTO.lgaValue}?true">Lga</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>Town/Village</label>
+                            <input type="text" class="form-control" th:field="*{town}" required>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>Facial Marks</label>
+                            <input type="text" class="form-control" th:field="*{facialMarks}">
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>Contact Address</label>
+                            <textarea  cols="5" rows="5" class="form-control" required name="contactAddress" th:text="*{contactAddress}"></textarea>
+
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label>Postal Address</label>
+                            <textarea  cols="5" rows="5" class="form-control" th:text="*{postalAddress}" name="postalAddress"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <h6 class="element-header"> Nok/Guardian Information   </h6>
+                <div class="element-box">
+
+
+                    <div class="row">
+
+                        <div class="form-group col-md-4">
+                            <label> Guardian's Name </label>
+                            <input type="text" class="form-control" th:field="*{guardianFullName}" required>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label> Guardian's Occupation</label>
+                            <input type="text"  class="form-control" th:field="*{guardianOccupation}" required>
+
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label> Relationship With Guardian</label>
+                            <input type="text"  class="form-control" th:field="*{guardianRelationship}" required >
+
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label> Emergency/Guardian Phone </label>
+                            <input type="text"  class="form-control" th:field="*{guardianPhone}" required >
+
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label> Guardian's Email</label>
+                            <input type="text"  class="form-control" th:field="*{guardianEmail}" >
+
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label> Guardian's Address</label>
+                            <textarea  cols="5" rows="5" class="form-control" name="guardianAddress" th:text="*{guardianAddress}"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col form-group text-right">
+                        <button class="btn btn-md btn-primary" id="btnSingleSearch">  <i class="fa fa-save" aria-hidden="true"></i> Save Changes </button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+<div layout:fragment="body_custom_script">
+    <script type="text/javascript" th:src="@{/assets/backend/custom/js/StudentManagement/StudentManagementEdit.js}"></script>
+    <script type="text/javascript" th:if="${message}" th:inline="javascript">PNotify.alert({text: /*[[${message}]]*/ 'Success', type: 'success'});</script>
+    <script type="text/javascript" th:if="${error}" th:inline="javascript">PNotify.alert({text: /*[[${error}]]*/ '', type: 'notice'});</script>
+</div>
+
+</body>
+</html>

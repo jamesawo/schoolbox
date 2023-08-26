@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{modules/backend/layouts/master}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title>Application Session View  </title>
+</head>
+<body>
+<div>
+    <ul layout:fragment="breadcrumbs" class="breadcrumb" >
+        <li class="breadcrumb-item"><a th:href="@{/SLMS/Dashboard}">Admin</a></li>
+        <li class="breadcrumb-item"><a href="#"> Institution Structure</a></li>
+        <li class="breadcrumb-item"><a href="#"> Application Session View</a></li>
+    </ul>
+</div>
+
+<div layout:fragment="content">
+
+    <div class="content-box">
+        <div class="element-wrapper">
+            <h6 class="element-header text-uppercase">Application Session View</h6>
+
+            <div class="element-box">
+
+                <div class="element-box-content">
+                    <div class="row">
+
+                        <div class="form-group col-md-2">
+                            <label > Start Date </label>
+                            <div class="date-input">
+                                <input type="text" class="single-daterange form-control" placeholder="Start Date">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-2">
+                            <label > End Date </label>
+                            <div class="date-input">
+                                <input type="text" class="single-daterange form-control" placeholder="End Date">
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label > Programme Type (Programme Category) </label>
+                            <select name="" class="form-control">
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label > Application Session </label>
+                            <select name="" class="form-control">
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-2">
+                            <label > Status </label>
+                            <select name="" class="form-control">
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="form-group col-2">
+                            <button class="btn btn-sm btn-primary"> Search  </button>
+                            <button class="btn btn-sm btn-primary"> Clear  </button>
+                        </div>
+
+
+                        <div class="form-group col-2">
+                            <button class="btn btn-sm btn-primary"> Activate  </button>
+                            <button class="btn btn-sm btn-primary"> Deactivate  </button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="element-box">
+                <div class="table-responsive table">
+                    <table class="table-bordered table-striped table">
+                        <thead>
+                        <tr class="text-left text-bold-700">
+                            <th><input type="checkbox"></th>
+                            <th scope="col"></th>
+                            <th scope="col">Programme Type</th>
+                            <th scope="col">Application Session</th>
+                            <th scope="col">Start Date</th>
+                            <th scope="col">End Date</th>
+                            <th scope="col">Status</th>
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="text-left">
+                            <td><input type="checkbox"></td>
+                            <td> <button class="btn btn-sm btn-primary">  <i class="fa fa-edit" aria-hidden="true"></i> </button> </td>
+                            <td>FULL TIME ND</td>
+                            <td>2015/2016</td>
+                            <td>01/11/2016</td>
+                            <td>31/12/3016</td>
+                            <td>Active</td>
+
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div layout:fragment="body_custom_script">
+
+    <script type="text/javascript" th:src="@{/assets/backend/custom/js/InstitutionStructure_Js/CategoryNameSetup.js}"></script>
+
+
+
+</div>
+
+</body>
+
+</html>

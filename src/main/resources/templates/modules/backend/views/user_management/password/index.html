@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{modules/backend/layouts/master}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title>Reset Password</title>
+</head>
+<body>
+<div>
+    <ul layout:fragment="breadcrumbs" class="breadcrumb" >
+        <li class="breadcrumb-item"><a th:href="@{/SLMS/Dashboard}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a th:href="@{/SLMS/UserManagement/Users}">Users</a></li>
+        <li class="breadcrumb-item"><a >Reset Password</a></li>
+    </ul>
+</div>
+
+<div layout:fragment="content">
+
+    <div class="content-box">
+        <div class="element-wrapper">
+            <h6 class="element-header">Reset Password</h6>
+
+            <div class="element-box">
+
+                <div class="element-box-content">
+                    <div class="row">
+                        <div class="col-10">
+                            <a class="mr-2 mb-2 btn btn-primary" th:href="@{/SLMS/UserManagement/Users}" type="button"> Users </a>
+                            <a class="mr-2 mb-2 btn btn-primary" th:href="@{/SLMS/UserManagement/Roles}" type="button"> Roles</a>
+                            <a class="mr-2 mb-2 btn btn-primary" th:href="@{/SLMS/UserManagement/Password}" type="button"> Password</a>
+                        </div>
+                        <div class="col-2">
+                            <a th:href="@{/SLMS/UserManagement/Users/Create}" class=" mr-2 mb-2 btn btn-primary" type="button"> Add User</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="element-box">
+
+                <div class="table-responsive">
+                    <table  width="100%" class="table table-bordered table-striped table-lightfont" id="passwordTable">
+                        <thead>
+                        <tr>
+                            <th >Login (Username)</th>
+                            <th >Email</th>
+                            <th >Actions</th>
+
+                        </tr>
+                        </thead>
+
+                        <tbody>
+
+                        <tr th:if="${users.empty}">
+                            <td colspan="2"> No User Available Yet </td>
+                        </tr>
+
+                        <tr th:each="user : ${users}">
+
+                            <td  th:text="${user.username}"></td>
+                            <td  th:text="${user.email}"></td>
+
+                            <td >
+
+                                <a th:href="@{/SLMS/UserManagement/Password/{id}(id=${user.id})}">Change Password</a>
+                            </td>
+
+
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div layout:fragment="body_custom_script">
+
+    <script type="text/javascript" >
+
+        $(document).ready( function () {
+            $('#passwordTable').DataTable();
+        });
+
+    </script>
+    <script type="text/javascript" th:if="${message}" th:inline="javascript">
+
+        PNotify.alert({
+            text: /*[[${message}]]*/ 'Success',
+            type: 'success'
+        });
+
+    </script>
+</div>
+
+</body>
+</html>

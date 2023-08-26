@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{modules/backend/layouts/master}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title> FEE TO COURSE ALLOCATION SETUP  </title>
+</head>
+<body>
+<div>
+    <ul layout:fragment="breadcrumbs" class="breadcrumb" >
+        <li class="breadcrumb-item"><a th:href="@{/SLMS/Dashboard}">DASHBOARD</a></li>
+        <li class="breadcrumb-item"><a href="#"> FEE TO COURSE ALLOCATION SETUP</a></li>
+    </ul>
+</div>
+
+<div layout:fragment="content" >
+    <div class="content-box">
+        <div class="col-lg-11">
+            <div class="element-wrapper">
+                <h6 class="element-header text-uppercase"> FEE TO COURSE ALLOCATION SETUP </h6>
+                <div class="element-box col-lg-10">
+                    <div class="element-box-content container">
+
+
+
+                    </div>
+
+                </div>
+
+                <div class="element-box col-lg-10">
+                    <div class="element-box-content container">
+
+                        <div class="row">
+
+                            <div class="col-auto c-pad form-group">
+                                <button class="btn btn-md btn-primary" id="btnAddSpecificFee">  <i class="fa fa-plus-square" aria-hidden="true"></i> Specific Fee </button>
+                            </div>
+
+                            <div class="col-auto c-pad form-group">
+                                <button class="btn btn-md btn-primary" id="btnAddGlobalFee">  <i class="fa fa-plus-square" aria-hidden="true"></i> Global Fee </button>
+                            </div>
+
+
+                            <div class="col-auto  form-group c-pad">
+                                <button class="btn btn-md btn-primary" >  <i class="fa fa-toggle-on" aria-hidden="true"></i> Activate  </button>
+                                <button class="btn btn-md btn-primary" >  <i class="fa fa-toggle-off" aria-hidden="true"></i> Deactivate </button>
+                            </div>
+
+                            <div class="form-group btn-group col-auto c-pad">
+                                <button type="button" class="btn btn-md btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Fee Type
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">GLOBAL</a>
+                                    <a class="dropdown-item" href="#">GENERAL</a>
+                                </div>
+                            </div>
+
+                            <div class="form-group btn-group col-auto c-pad" >
+                                <button type="button" class="btn btn-md btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Export Data
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">EXCEL</a>
+                                    <a class="dropdown-item" href="#">PDF</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row table-responsive">
+                            <div class="col-sm-12" style="overflow-x:auto;">
+                                <table class="table table-striped table-bordered table-hover table-condensedtable">
+                                    <thead>
+                                    <tr class="text-left">
+                                        <th scope="col-1"><input type="checkbox" id="chkStatusHeader"> </th>
+                                        <th></th>
+                                        <th scope="col"> PROGRAMME TYPE </th>
+                                        <th scope="col-1"> SESSION </th>
+                                        <th scope="col-1"> LEVEL </th>
+                                        <th scope="col"> INSTITUTION STRUCTURE </th>
+                                        <th scope="col"> SEMESTER </th>
+                                        <th scope="col"> FEE CATEGORY </th>
+                                        <th scope="col"> DEPENDENT FEE </th>
+                                        <th scope="col"> AMOUNT (₦) </th>
+                                        <th scope="col"> ITEM CODE </th>
+                                        <th scope="col-1"> MERCHANT ID </th>
+                                        <th scope="col"> DATE MODIFIED </th>
+                                        <th scope="col"> FEE TYPE </th>
+                                        <th scope="col"> STATUS</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="col-auto" >
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div layout:fragment="body_modal">
+
+        <form th:action="@{/SLMS/FeeManagement/SpecificFeeCreation/Create}"  method="post" id="frmSpecificFeeSetup" >
+            <div aria-hidden="true" aria-labelledby="myLargeModalLabel" id="createSpecificFeeModal" class="modal fade" role="dialog" tabindex="-1" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title">-</h5>
+                            <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"> &times;</span></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <hr>
+                            <h6 class="text-uppercase">SETUP DETAILS</h6>
+                            <hr>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-dismiss="modal" type="button"> Close</button>
+                            <button class="btn btn-primary" type="button" id="btnSaveSpecificFee"> Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+
+    </div>
+</div>
+
+<div layout:fragment="body_custom_script">
+    <script type="text/javascript" th:src="@{/assets/backend/custom/js/FeeManagement/SpecificFee.js}"></script>
+    <script type="text/javascript" th:if="${message}" th:inline="javascript">PNotify.alert({text: /*[[${message}]]*/ 'Success', type: 'success'});</script>
+    <script type="text/javascript" th:if="${error}" th:inline="javascript">PNotify.alert({text: /*[[${error}]]*/ '', type: 'notice'});</script>
+</div>
+
+</body>
+
+</html>

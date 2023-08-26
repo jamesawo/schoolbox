@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{modules/backend/layouts/master}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title>COURSE OF STUDY DURATION  </title>
+</head>
+<body>
+<div>
+    <ul layout:fragment="breadcrumbs" class="breadcrumb" >
+        <li class="breadcrumb-item"><a th:href="@{/SLMS/Dashboard}">Admin</a></li>
+        <li class="breadcrumb-item"><a href="#"> Course of Study Duration</a></li>
+        <li class="breadcrumb-item"><a th:href="@{/SLMS/InstitutionStructure/CourseOfStudyDuration}"> Course of Study Duration</a></li>
+    </ul>
+</div>
+
+<div layout:fragment="content">
+
+    <div class="content-box">
+        <div class="element-wrapper">
+            <h6 class="element-header text-uppercase">COURSE OF STUDY DURATION SETUP</h6>
+
+            <div class="element-box">
+
+                <div class="element-box-content">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label > Course/Programme of Study </label>
+                            <input type="text" id="txtCourseOfStudyReport" class="form-control" placeholder="Search..">
+                        </div>
+
+
+                        <div class="form-group col-md-4">
+                            <label > Programme Types </label>
+                            <select id="selProgrammeTypesReport" class="form-control">
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label > Course/Programme of Study </label>
+                            <input type="number" id="txtNoOfLevelsReport" class="form-control" min="1">
+                        </div>
+
+
+                        <div class="form-group col-md-4">
+                            <label > Duration(Months) </label>
+                            <input type="number" id="txtDurationMonthsReport" class="form-control" min="1">
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <button class="btn btn-sm btn-primary" id="btnSearchCourseOfStudy"> Search </button>
+
+                        <button class="createModal btn btn-sm btn-primary" id="btnCreateCourseOfStudy"> Create </button>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="element-box">
+                <div class="table-responsive table">
+                    <table class="table-bordered table-striped table">
+                        <thead>
+                        <tr class="text-left">
+                            <th scope="col-8" >Description</th>
+                            <th scope="col-2" >Hierarchy</th>
+                            <th scope="col-2" ></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-left">
+                                <td>Faculty</td>
+                                <td>1</td>
+                                <td> <a href="" class="btn btn-sm btn-primary "> <i class="fa fa-pencil" aria-hidden="true"></i> </a> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div layout:fragment="body_modal">
+
+    <form method="post" >
+        <div aria-hidden="true" aria-labelledby="myLargeModalLabel" id="createModal" class="modal fade" role="dialog" tabindex="-1" data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                        <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"> &times;</span></button>
+                    </div>
+                    <div class="modal-body">
+
+
+                        <h6 class="text-uppercase">Course/Programme of Study</h6>
+                        <hr>
+
+                        <div th:replace="/modules/backend/views/InstitutionStructure/fragments/__InstitutionStructureDropDown :: InstitutionStructureDropDown(${categories}, ${instStrListByLeastHieCategory})"></div>
+
+
+                        <h6 class="text-uppercase" style="margin-top: 1em">Programme Type</h6>
+                        <hr>
+
+
+                        <div th:replace="/modules/backend/views/InstitutionStructure/fragments/__ProgrammeTypeDropDown :: ProgrammeTypeDropDown(${programmeCategories})"></div>
+
+
+
+                        <h6 class="text-uppercase custom-space">Course Duration</h6>
+                        <hr>
+                        <hr>
+
+                        <div class="row">
+                            <div class="form-group mt-lg col-lg-6">
+                                <div >
+                                    <label class="text-uppercase">No. of Levels</label>
+                                    <input type="number" class="form-control" min="1" id="txtNoOfLevel">
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-lg col-lg-6">
+                                <div >
+                                    <label class="text-uppercase">Duration (Months)</label>
+                                    <input type="number" class="form-control" min="1" id="txtDuration">
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-lg col-lg-4">
+                                <button class="btn btn-primary" type="button" id="btnAddCourseOfStudyDuration"> Add</button>
+                            </div>
+
+                        </div>
+
+                        <hr>
+                        <hr>
+
+                        <form th:action="@{/SLMS/InstitutionStructure/CourseOfStudyDuration}" method="post" th:object="${courseDurationDTO}">
+
+                            <div class="row" style="display: none" id="divAddCourseOfStudyDuration">
+                                <div class="table-responsive table col-12">
+                                    <table class="table-bordered table-striped table" id="tblCourseOfStudyDuration">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col" class="text-sm-left">Course/Programme of Study</th>
+                                            <th scope="col" class="text-sm-left">Programme Type</th>
+                                            <th scope="col" class="text-sm-left">No. Of Levels</th>
+                                            <th scope="col" class="text-sm-left">Duration (Month)</th>
+                                            <th scope="col" class="text-sm-center" ></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>
+
+                            </div>
+                        </form>
+
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" data-dismiss="modal" type="button"> Close</button>
+                        <button type="submit" class="btn btn-md btn-primary" disabled id="btnSaveCourseDuration"> Save  <i class="fa fa-download" aria-hidden="true"></i> </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<div layout:fragment="body_custom_script">
+
+    <script type="text/javascript" th:src="@{/assets/backend/custom/js/InstitutionStructure_Js/CourseOfStudy.js}"></script>
+    <script type="text/javascript" th:if="${message}" th:inline="javascript">
+        PNotify.alert({
+            text: /*[[${message}]]*/ 'Success',
+            type: 'success'
+        });
+    </script>
+</div>
+
+</body>
+</html>

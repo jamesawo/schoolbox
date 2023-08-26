@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+
+</head>
+<body>
+<!--------------------START - Main Menu-------------------->
+<div th:fragment="body_main_menu"
+     class="menu-w selected-menu-color-light menu-activated-on-click menu-has-selected-link color-scheme-light color-style-transparent sub-menu-color-light menu-position-side menu-side-left menu-layout-full sub-menu-style-inside" >
+
+    <div class="logo-w">
+        <a class="logo" href="@{/}">
+            <div class="logo-element"></div>
+            <div class="logo-label" th:text="${globalSettingParam.get('CollegeName')}">School Name</div>
+            <div class="logo-label"></div>
+        </a>
+    </div>
+
+    <div class="menu-actions">
+
+    </div>
+    <div class="element-search autosuggest-search-activator">
+        <input placeholder="Start typing to search..." type="text">
+    </div>
+    <h1 class="menu-page-header text-uppercase">Welcome </h1>
+
+    <ul class="main-menu">
+<!--        <li class="sub-header"><span>MODULES</span></li>-->
+        <li class="selected has-sub-menu"><a>
+            <div class="icon-w">
+                <div class="os-icon os-icon-layout"></div>
+            </div><span class="text-uppercase">HOME</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-icon"><i class="os-icon os-icon-layout"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/frontend/fragments/__fragment_mod_nav_links :: HomeLinks"></ul>
+                </div>
+            </div>
+        </li>
+        <li class=" has-sub-menu"><a >
+            <div class="icon-w">
+                <div class="os-icon os-icon-layers"></div>
+            </div><span>APPLICATION</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-icon"><i class="os-icon os-icon-layers"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/frontend/fragments/__fragment_mod_nav_links :: Applicationlinks"></ul>
+                </div>
+            </div>
+        </li>
+
+        <li class=" has-sub-menu"><a>
+            <div class="icon-w">
+                <div class="os-icon os-icon-package"></div>
+            </div><span> ACCEPTANCE FEE</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-icon"><i class="os-icon os-icon-package"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/frontend/fragments/__fragment_mod_nav_links :: AcceptanceLinks"></ul>
+                </div>
+            </div>
+        </li>
+        <li class=" has-sub-menu"><a >
+            <div class="icon-w">
+                <div class="os-icon os-icon-file-text"></div>
+            </div><span>RESULT CHECK</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-icon"><i class="os-icon os-icon-file-text"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/frontend/fragments/__fragment_mod_nav_links :: ResultCheckLinks"></ul>
+                </div>
+            </div>
+        </li>
+
+        <li class=" has-sub-menu" sec:authorize="hasAuthority('ACCESS_STUDENT_PROFILE')" >
+            <a >
+                <div class="icon-w">
+                    <div class="os-icon os-icon-mail"></div>
+                </div><span>STUDENT CORNER</span>
+            </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-icon"><i class="os-icon os-icon-mail"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/frontend/fragments/__fragment_mod_nav_links :: StudentCornerLinks"></ul>
+                </div>
+            </div>
+        </li>
+
+        <li class=" has-sub-menu"><a >
+            <div class="icon-w">
+                <div class="os-icon os-icon-award"></div>
+            </div><span>ONLINE TRANSCRIPT</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-icon"><i class="os-icon os-icon-users"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/frontend/fragments/__fragment_mod_nav_links :: OnlineTranscriptLinks"></ul>
+
+                </div>
+            </div>
+        </li>
+        <li class=" has-sub-menu"><a >
+            <div class="icon-w">
+                <div class="os-icon os-icon-settings"></div>
+            </div><span>CERTIFICATE CHECK</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-icon"><i class="os-icon os-icon-edit-32"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/frontend/fragments/__fragment_mod_nav_links :: CertificateCheckLinks"></ul>
+                </div>
+            </div>
+        </li>
+        <li class=" has-sub-menu"><a >
+            <div class="icon-w">
+                <div class="os-icon os-icon-grid"></div>
+            </div><span>PUME EXAM SCHEDULE</span>
+        </a>
+            <div class="sub-menu-w">
+                <div class="sub-menu-icon"><i class="os-icon os-icon-grid"></i></div>
+                <div class="sub-menu-i">
+                    <ul class="sub-menu" th:replace="/modules/frontend/fragments/__fragment_mod_nav_links :: PUMEScheduleLinks"></ul>
+
+                </div>
+            </div>
+        </li>
+
+    </ul>
+
+    <div class="side-menu-magic" >
+        <div th:replace="/modules/frontend/fragments/__fragment_mod_nav_ads :: MenuAdsSpace">
+
+        </div>
+    </div>
+
+
+</div>
+<!--------------------END - Main Menu-------------------->
+</body>
+</html>

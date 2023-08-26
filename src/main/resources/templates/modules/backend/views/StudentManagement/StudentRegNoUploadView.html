@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{modules/backend/layouts/master}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title> UPLOAD BATCH REG NO.  </title>
+</head>
+<body>
+<div>
+    <ul layout:fragment="breadcrumbs" class="breadcrumb" >
+        <li class="breadcrumb-item"><a th:href="@{/Admin/Dashboard}">ADMIN</a></li>
+        <li class="breadcrumb-item"><a href="#"> STUDENT MANAGEMENT  </a></li>
+        <li class="breadcrumb-item"><a href="#"> REG NO. UPLOAD </a></li>
+    </ul>
+</div>
+
+<div layout:fragment="content">
+
+    <div class="content-box">
+        <div class="element-wrapper">
+            <h6 class="element-header text-uppercase"> STUDENT REG NO. UPLOAD </h6>
+
+            <div class="element-box">
+                <div class="element-box-content">
+
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label> Programme Category  </label>
+                            <select name=""  class="form-control">
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label> Programme Type </label>
+                            <select name=""  class="form-control">
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label> Session </label>
+                            <select name=""  class="form-control">
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label> Level </label>
+                            <select name=""  class="form-control">
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label> Semester </label>
+                            <select name=""  class="form-control">
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label> Fee Status </label>
+                            <select name=""  class="form-control">
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label> Fee Category </label>
+                            <select name=""  class="form-control">
+                                <option value="">Select</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-md-4">
+                            <label> Institution Structure </label>
+                            <input type="text" class="form-control" placeholder="Institution Structure">
+                        </div>
+
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col form-group">
+                            <button class="btn btn-md btn-primary" >  <i class="fa fa-search-plus" aria-hidden="true"></i>  Search </button>
+                            <button class="btn btn-md btn-primary" >  <i class="fa fa-close" aria-hidden="true"></i> Clear </button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="element-box">
+                <div class="row">
+                    <div class="col-3 form-group">
+                        <button class="btn btn-md btn-primary" id="btnAddSpecificFee">  <i class="fa fa-plus-square" aria-hidden="true"></i> Add New Specific Fee </button>
+                        <button class="btn btn-md btn-primary" id="btnAddGlobalFee">  <i class="fa fa-plus-square" aria-hidden="true"></i> Set Global Fee </button>
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col form-group">
+                        <button class="btn btn-md btn-primary" >  <i class="fa fa-toggle-on" aria-hidden="true"></i> Activate </button>
+                        <button class="btn btn-md btn-primary" >  <i class="fa fa-toggle-off" aria-hidden="true"></i> Deactivate </button>
+                        <button class="btn btn-md btn-primary" >  <i class="fa fa-download" aria-hidden="true"></i> Export </button>
+
+                        <!-- Example single danger button -->
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-md btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Format
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">EXCEL</a>
+                                <a class="dropdown-item" href="#">PDF</a>
+                            </div>
+                        </div>
+
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-md btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Fee Type
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="#">GLOBAL</a>
+                                <a class="dropdown-item" href="#">GENERAL</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="table-responsive table">
+                    <table class="table-borderless table-striped table">
+                        <thead>
+                        <tr class="text-left">
+                            <th scope="col-1"><input type="checkbox" id="chkStatusHeader"> </th>
+                            <th></th>
+                            <th scope="col"> PROGRAMME TYPE </th>
+                            <th scope="col-1"> SESSION </th>
+                            <th scope="col-1"> LEVEL </th>
+                            <th scope="col"> INSTITUTION STRUCTURE </th>
+                            <th scope="col"> SEMESTER </th>
+                            <th scope="col"> FEE CATEGORY </th>
+                            <th scope="col"> DEPENDENT FEE </th>
+                            <th scope="col"> AMOUNT (₦) </th>
+                            <th scope="col"> STATUS </th>
+                            <th scope="col"> ITEM CODE </th>
+                            <th scope="col-1"> MERCHANT ID </th>
+                            <th scope="col"> DATE MODIFIED </th>
+                            <th scope="col"> FEE TYPE </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <tr class="text-left">
+                            <td><input type="checkbox"></td>
+                            <td>
+                                <button class="btn btn-md btn-primary btnEdit">
+                                    <i class="fa fa-edit" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                            <td>FULL TIME ND (FULL TIME)</td>
+                            <td>2022/2023</td>
+                            <td>All</td>
+                            <td>All</td>
+                            <td>FIRST SEMESTER</td>
+                            <td>TECHNOLOGY FEE</td>
+                            <td>-</td>
+                            <td>5,000.00</td>
+                            <td>Active</td>
+                            <td>17033001/12040690</td>
+                            <td>-</td>
+                            <td>14/11/2018</td>
+                            <td>Global Fee</td>
+
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div layout:fragment="body_modal">
+
+    </div>
+
+</div>
+
+<div layout:fragment="body_custom_script">
+    <script type="text/javascript" th:src="@{/assets/backend/custom/js/FeeManagement/SpecificFee.js}"></script>
+    <script type="text/javascript" th:if="${message}" th:inline="javascript">PNotify.alert({text: /*[[${message}]]*/ 'Success', type: 'success'});</script>
+    <script type="text/javascript" th:if="${error}" th:inline="javascript">PNotify.alert({text: /*[[${error}]]*/ '', type: 'notice'});</script>
+</div>
+
+</body>
+
+</html>

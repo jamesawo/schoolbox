@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+     <!--  Home Module Link  -->
+    <ul th:fragment="HomeLinks" class="sub-menu">
+        <li><a href="/">PORTAL HOME</a></li>
+        <li><a th:href="@{ ${globalSettingParam.get('SchoolWebSiteUrl')} }" target="_blank">RETURN TO SCHOOL WEBSITE</a></li>
+    </ul>
+
+    <!-- Application Module Link-->
+     <ul th:fragment="Applicationlinks" class="sub-menu">
+         <li><a href="#">START NEW APPLICATION</a></li>
+         <li><a href="#">RE-PRINT APPLICATION</a></li>
+     </ul>
+
+     <!--     Acceptance Fee Module Link-->
+     <ul th:fragment="AcceptanceLinks" class="sub-menu">
+         <li><a href="#">ACCEPTANCE FEE</a></li>
+     </ul>
+
+     <!--     Admission Module Link-->
+     <ul th:fragment="ResultCheckLinks" class="sub-menu">
+         <li><a href="#">ADMISSION RESULT CHECK</a></li>
+         <li><a href="#">POST UME RESULT CHECK</a></li>
+
+     </ul>
+
+     <!--     Student Corner Link-->
+     <ul th:fragment="StudentCornerLinks" class="sub-menu">
+         <li><a th:href="@{/StudentFacing/FeeManagement/StudentFee}">STUDENT FEES</a></li>
+         <li><a th:href="@{/StudentFacing/CourseManagement/CourseRegistrationView}">COURSE REGISTRATION</a></li>
+         <li><a href="#">SEMESTER RESULT CHECK</a></li>
+         <li><a th:href="@{/StudentFacing/StudentManagement/StudentProfileView}">STUDENT PROFILE UPDATE</a></li>
+         <li><a href="#">RE-PRINT ACCEPTANCE</a></li>
+         <li><a href="#">RE-PRINT ADMISSION LETTER</a></li>
+     </ul>
+
+     <!--     Transcript Module Link -->
+     <ul th:fragment="OnlineTranscriptLinks" class="sub-menu">
+         <li><a href="#">NEW TRANSCRIPT APPLICATION</a></li>
+         <li><a href="#">CONTINUE PREVIOUS APPLICATION</a></li>
+         <li><a href="#">APPLICATION DETAILS</a></li>
+     </ul>
+
+     <!--   Certificate Module Link    -->
+     <ul th:fragment="CertificateCheckLinks" class="sub-menu">
+         <li><a  href="#"> CHECK CERTIFICATE </a></li>
+     </ul>
+
+     <!--  Exam Schedule Module Link    -->
+     <ul th:fragment="PUMEScheduleLinks" class="sub-menu">
+         <li><a href="#">PRINT PUME EXAM SCHEDULE </a></li>
+         <li><a href="#">PRINT EXAM PASS</a></li>
+     </ul>
+
+</body>
+</html>

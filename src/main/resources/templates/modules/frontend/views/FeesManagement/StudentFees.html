@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{modules/frontend/layouts/master}"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>STUDENT FEES </title>
+
+</head>
+<body>
+
+<div layout:fragment="content" class="as-grid">
+    <div>
+        <ul class="breadcrumb" >
+            <li class="breadcrumb-item"><a href="#"> STUDENT FEES</a></li>
+            <li class="breadcrumb-item"><a href="#"> STUDENT SESSION FEE</a></li>
+        </ul>
+    </div>
+
+    <div class="content-i">
+        <div class="content-box container">
+            <div class="row mbr-justify-content-center custom-space">
+                <div class="col-sm-12 col-md-11 col-lg-11">
+                    <form id="delFormValidate" method="post">
+
+                        <div class="row container">
+
+                            <div class="col-sm-11 col-md-11 col-lg-11">
+                                <div class="container">
+
+                                    <div class="element-wrapper">
+                                        <div class="element-box ">
+                                            <h6 class="element-header">BASIC PROFILE DETAILS</h6>
+
+                                            <div class="text-left m-t-40 custom-space" style="margin-left: 2em">
+                                                <div class="row form-group">
+                                                    <div class="col-md-5">FULL NAME :</div>
+                                                    <div class="col-md-7"><span class="m-l-15 text-primary" th:text="${student.fullName}"> Name </span></div>
+                                                </div>
+                                                <div class="row form-group">
+                                                    <div class="col-md-5">REG NUMBER :</div>
+                                                    <div class="col-md-7"><span class="m-l-15 text-primary" id="studentRegNumber" th:text="${student.regNumber}" th:attr="data-regNumber=${student.regNumber}"> TEST/STUDENT/0023 </span></div>
+                                                </div>
+                                                <div class="row form-group">
+                                                    <div class="col-md-5">CURRENT SESSION :</div>
+                                                    <div class="col-md-7"><span class="m-l-15 text-primary" th:text="${student.currentSession}"> 2020/2021 </span></div>
+                                                </div>
+                                                <div class="row form-group">
+                                                    <div class="col-md-5">PROGRAMME:</div>
+                                                    <div class="col-md-7"><span class="m-l-15 text-primary" id="insStructure" th:text="${student.institutionStructure.description}" > MECHANICAL ENGINEERING </span></div>
+                                                </div>
+
+                                                <div class="row form-group">
+                                                    <div class="col-md-5">LEVEL OF STUDY :</div>
+                                                    <div class="col-md-7"><span class="m-l-15 text-primary" th:text="${student.level}" > LEVEL 2 </span></div>
+                                                </div>
+
+                                                <div class="row form-group" >
+
+                                                    <div class="col-md-5" >PROGRAMME TYPE :</div>
+                                                    <div class="col-md-7" ><span class="m-l-15 text-primary" th:text="${student.programmeType}"> UNDERGRADUATE FULL TIME </span></div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-11 col-md-11 col-lg-11" id="divFeeBreakDown">
+                                <div class="container">
+                                    <div class="element-wrapper">
+                                        <div class="element-box">
+                                            <h6 class="element-header">FEES BREAKDOWN </h6>
+                                            <div class="row form-group">
+                                                <div class="col-sm-12 col-md-6 col-lg-6 ">
+                                                    <label class="text-sm-left"> <strong class="text-uppercase text-sm-left">  Select Session to View applicable fee: </strong> </label>
+                                                </div>
+                                                <div class="col-sm-12 col-md-6 col-lg-6 ">
+
+                                                    <select id="selSession" class="form-control">
+                                                        <option value="0">All Session</option>
+                                                        <option th:each="data: ${sessions}"
+                                                                th:value="${data.id}"
+                                                                th:text="${data.description}">Select</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="table-responsive ">
+                                                <div class="">
+
+                                                    <table class="table table-striped table-hover  table-bordered  " id="tblStudentFee">
+                                                        <thead>
+                                                        <tr>
+                                                            <th scope="col" > FEE TYPE </th>
+                                                            <th scope="col" > AMOUNT </th>
+                                                            <th scope="col" > PAID </th>
+                                                            <th scope="col" > BALANCE </th>
+                                                            <th scope="col" > CATEGORY TYPE </th>
+                                                            <th scope="col" > </th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody class="col-auto" >
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="col-sm-11 col-md-11 col-lg-11" id="divSettleFee" style="display: none">
+                                <div class="container">
+
+                                    <div class="element-wrapper">
+                                        <div class="element-box">
+
+                                            <div class="row element-header">
+                                                <div class="col-sm-8 col-md-6 col-lg-8">
+                                                    <h6 class="text-bold-600" >
+                                                        PROCESS PAYMENT
+                                                    </h6>
+                                                </div>
+                                                <div class="col-sm-2 col-md-4 col-lg-2"></div>
+                                                <div class="col-sm-2 col-md-2 col-lg-2">
+                                                    <a  class="text-primary" id="aBack" style="cursor: pointer"> <i class="fa fa-window-close" aria-hidden="true"></i> </a>
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <div class="col-sm-12 col-md-10 col-lg-10">
+                                                    <label> FEE TYPE: </label>
+                                                    <input type="text" class="form-control" value="" id="eTitle" readonly>
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group canPayPart custom-space-2" id="canPayPart" style="display: none">
+                                                <div class="col-sm-12 col-md-10 col-lg-10">
+                                                    <div class="form-group">
+                                                        <label class="text-uppercase">Select Installment</label>
+                                                        <select name="" id="selInstalments" class="form-control">
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <div class="col-sm-12 col-md-10 col-lg-10">
+                                                    <div class="form-group">
+                                                        <label class="text-sm-left text-uppercase">  Settlement / Payment Method</label>
+                                                        <select  class="form-control selPaymentOption" id="selPaymentOption">
+                                                            <option disabled> Select Payment Method </option>
+                                                            <option th:each="data : ${payments}"
+                                                                    th:text="${data.description}"
+                                                                    th:attr="data-type=${data.type}" th:value="${data.id}"></option>
+                                                        </select>
+                                                    </div>
+
+                                                    <button class="btn btn-primary btn-md" type="button" id="btnSettleFee">Settle Fee</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="row custom-space" id="divVerifyPin" style="display: none">
+
+                                                <div class="form-group col-sm-12 col-md-6 col-lg-6">
+                                                    <label for="txtPinNumber">Transaction Ref/Pin Number</label>
+                                                    <input id="txtPinNumber" type="text" class="form-control" placeholder="Reference/Pin Number">
+                                                </div>
+
+                                                <div class="form-group col-sm-12 col-md-6 col-lg-6" id="divSerialNumber" style="display: none">
+                                                    <label for="txtSerialNumber">Serial Number</label>
+                                                    <input id="txtSerialNumber" type="text" class="form-control" placeholder="Enter Serial Number">
+                                                </div>
+
+                                                <div class="form-group col-sm-12 col-md-8 col-lg-8">
+                                                    <button class="btn btn-primary btn-md" type="button" id="btnVerifyPayment">Verify Payment</button>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div layout:fragment="body_custom_script">
+
+    <script type="text/javascript" th:src="@{/assets/frontend/custom/js/StudentFees/StudentFees.js}"></script>
+
+    <script type="text/javascript" th:if="${success}" th:inline="javascript">showStackTopCenterAlert('success',  /*[[${success}]]*/ 'Success' ); </script>
+</div>
+
+</body>
+</html>

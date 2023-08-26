@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{modules/backend/layouts/master}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title>Roles</title>
+</head>
+<body>
+<div>
+    <ul layout:fragment="breadcrumbs" class="breadcrumb" >
+        <li class="breadcrumb-item"><a th:href="@{/SLMS/Dashboard}">Dashboard</a></li>
+        <li class="breadcrumb-item"><a >Roles</a></li>
+    </ul>
+</div>
+
+<div layout:fragment="content">
+
+    <div class="content-box">
+        <div class="element-wrapper">
+            <h6 class="element-header">Roles</h6>
+
+            <div class="element-box">
+
+                <div class="element-box-content">
+                    <div class="row">
+                        <div class="col-10">
+                            <a class="mr-2 mb-2 btn btn-primary" th:href="@{/SLMS/UserManagement/Users}"  type="button"> Users </a>
+                            <a class="mr-2 mb-2 btn btn-primary" th:href="@{/SLMS/UserManagement/Roles}"  type="button"> Roles</a>
+                            <a class="mr-2 mb-2 btn btn-primary" th:href="@{/SLMS/UserManagement/Password}" type="button"> Password</a>
+
+                        </div>
+                        <div class="col-2">
+                            <a th:href="@{/SLMS/UserManagement/Role/Create}" class=" mr-2 mb-2 btn btn-primary" type="button"> Add Role</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="element-box">
+                <div class="table-responsive">
+                    <table  width="100%" class="table table-bordered table-striped table-lightfont" id="rolesTable">
+                        <thead>
+                        <tr>
+                            <th><input type="checkbox"></th>
+                            <th width="70%">Role Name</th>
+                            <th>Actions</th>
+
+                        </tr>
+                        </thead>
+
+                        <tbody>
+
+                        <tr th:each="role : ${roles}">
+                            <td><input type="checkbox"></td>
+                            <td th:text="${role.name}">Role Name</td>
+                            <td >
+                                <a th:href="@{/SLMS/UserManagement/Role/Edit/{id}(id=${role.id})}" >Edit</a> |
+                                <a th:href="@{/SLMS/UserManagement/Role/Delete/{id}(id=${role.id})}" >Delete</a>
+                            </td>
+
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div layout:fragment="body_custom_script">
+
+    <script type="text/javascript" >
+
+        $(document).ready( function () {
+            $('#rolesTable').DataTable();
+        });
+
+    </script>
+    <script type="text/javascript" th:if="${message}" th:inline="javascript">
+
+        PNotify.alert({
+            text: /*[[${message}]]*/ 'Success',
+            type: 'success'
+        });
+
+    </script>
+</div>
+
+</body>
+</html>

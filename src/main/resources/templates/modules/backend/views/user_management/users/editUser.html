@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{modules/backend/layouts/master}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update User Details </title>
+</head>
+<body>
+<ul layout:fragment="breadcrumbs" class="breadcrumb" >
+    <li class="breadcrumb-item"><a th:href="@{/SLMS/Dashboard}">Dashboard</a></li>
+    <li class="breadcrumb-item"><a th:href="@{/SLMS/UserManagement/Users}">Users</a></li>
+    <li class="breadcrumb-item"><a >Update User</a></li>
+</ul>
+
+<div layout:fragment="content">
+    <div class="content-box">
+        <div class="element-wrapper">
+            <h6 class="element-header">Update User Details</h6>
+
+            <div class="element-box">
+
+                <div class="element-box-content">
+                    <form th:action="@{/SLMS/UserManagement/Users/Edit}" method="Post" th:object="${userRequest}">
+
+                        <div class="col-12">
+                            <h5 class="bold-label">Roles:</h5>
+
+                            <div class="form-check" th:each="role : ${roles}" th:object="${user}">
+
+                                <input type="checkbox" class="form-check-input"  th:field="*{roles}"  th:value="${role.id}" >
+
+                                <label class="form-check-label" th:text="${role.name}" th:for="${'roles' + role.id}">
+                                    User Role
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-4 custom-space" th:object="${user}">
+
+                            <input type="hidden" name="id" id="Id" th:value="*{id}">
+
+                            <div class="form-group">
+                                <label for="Username">Username</label>
+                                <input type="text" class="form-control" name="username" id="Username"  th:value="*{username}">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Email">Email</label>
+                                <input type="text" class="form-control" name="email" id="Email" th:value="*{email}">
+                            </div>
+
+
+                            <button class="mr-2 mb-2 btn btn-primary" type="submit"> Update User</button>
+
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

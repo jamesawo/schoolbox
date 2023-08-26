@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--
+    categories => list of institution structure category ( faculty, department, programme/choice)
+    instStrListByLeastHieCategory => list of inst str by least (category with smallest hierarchy eg faculty => all inst str under faculty)
+-->
+<div class="row" th:fragment="InstitutionStructureDropDown(categories, instStrListByLeastHieCategory)">
+
+    <div class="form-group mt-lg col-lg-12" th:each="category : ${categories}" >
+
+        <div  th:class="${category.hierarchy} > 1 ? 'hide divSelectCategory' : divSelectCategory "
+              th:classappend="${category.hierarchy} ? 'category'+${category.hierarchy} "
+              th:attr="data-number=${category.hierarchy}">
+
+            <label class="text-uppercase"  th:text="${category.description}">Description</label>
+
+            <select name="" class="selCategory form-control"  th:id="${category.hierarchy}" th:attr="data-categoryId=${category.id}, data-description=${category.description}">
+                <option value="">Select</option>
+                <option th:unless="${category.hierarchy} != 1"
+                        th:each="institution : ${instStrListByLeastHieCategory}"
+                        th:value="${institution.id}"
+                        th:text="${institution.description}"
+                        th:attr="data-id=${institution.id},
+                                                data-category_id=${institution.category.id},
+                                                data-category_hierarchy=${institution.category.hierarchy},
+                                                data-description=${institution.description}"></option>
+            </select>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+</body>
+</html>

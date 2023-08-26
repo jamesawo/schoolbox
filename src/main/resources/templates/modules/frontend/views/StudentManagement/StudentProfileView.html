@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{modules/frontend/layouts/master}"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>STUDENT PROFILE VIEW </title>
+
+</head>
+<body>
+
+<div layout:fragment="content" class="as-grid">
+    <div>
+        <ul class="breadcrumb" >
+            <li class="breadcrumb-item"><a href="#"> STUDENT PROFILE</a></li>
+            <li class="breadcrumb-item"><a href="#"> UPDATE STUDENT PROFILE View</a></li>
+        </ul>
+    </div>
+
+    <div class="content-i">
+        <div class="content-box">
+            <div class="container">
+                <div class="row mbr-justify-content-center custom-space">
+
+                    <form id="delFormValidate" method="post"
+                          th:action="@{/StudentFacing/StudentManagement/StudentProfileView}"
+                          th:object="${studentDTO}"
+                          enctype="multipart/form-data">
+
+                        <div class="row container">
+                            <div class="col-sm-5">
+
+                                <div class="text-center element-wrapper">
+                                    <div class="element-box">
+                                        <div class="img-fluid">
+
+                                            <img  class="center-block img imgPassport"
+                                                  th:if="${student.passportData == null}"
+                                                  th:src="@{/assets/images/res/default-avatar.png}" width="40%"/><br><br>
+
+                                            <img class="center-block img imgPassport  img-thumbnail"
+                                                 th:if="${student.passportData != null}"
+                                                 th:src="@{'data:image/jpeg;base64,'+${student.passportData}}" width="40%"  />
+
+                                            <div class="custom-space" th:if="${studentConfigMap.get('AllowPassportChange')}">
+                                                <label for="file" class="btn btn-md btn-primary text-center"> <i class="fa fa-upload" aria-hidden="true"></i> </label>
+                                                <br>
+
+                                                <input type="file" name="passport" id="file" class="input-file" />
+                                                <label><span></span></label>
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="text-center m-t-40" style="margin-left: 2em">
+
+
+                                            <div class="row form-group">
+                                                <div class="col-md-12 col-sm-12 mbr-bold">FULL NAME :</div>
+                                                <div class="col-md-12 col-sm-12"><span class="m-l-15 text-primary" th:text="${student.fullName}"> </span></div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <div class="col-md-12">CURRENT LEVEL :</div>
+                                                <div class="col-md-12"><span class="m-l-15 text-primary" th:text="${student.level}"> </span></div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <div class="col-md-12 col-sm-12">REG NUMBER :</div>
+                                                <div class="col-md-12 col-sm-12"><span class="m-l-15 text-primary" th:text="${student.regNumber}"> </span></div>
+                                            </div>
+
+                                            <div class="row form-group">
+                                                <div class="col-md-12">PROGRAMME TYPE :</div>
+                                                <div class="col-md-12"><span class="m-l-15 text-primary" th:text="${student.programmeType}"> </span></div>
+                                            </div>
+
+
+                                            <div class="row form-group" th:each="data : ${student.programmeOfStudyStructure1.entrySet()}">
+
+                                                <div class="col-md-12 text-uppercase" th:text="${data.value[0]} + ' :' ">PROGRAMME TYPE :</div>
+                                                <div class="col-md-12" ><span class="m-l-15 text-primary" th:text="${data.value[1]}"> </span></div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div> <!-- end card-box -->
+
+
+                                <div class="element-wrapper">
+                                    <div class="element-box">
+                                        <h6 class="element-header">Your Most Recent Activity</h6>
+                                        <div class="timed-activities compact">
+                                            <div class="timed-activity">
+                                                <div class="ta-date"><span>Fee payment</span></div>
+                                                <div class="ta-record-w">
+                                                    <div class="ta-record">
+                                                        <div class="ta-timestamp"><strong> Jan 02 2019 </strong>  </div>
+                                                        <div class="ta-activity">Paid First Semester School Fee <a href="#">View Receipt</a> </div>
+                                                    </div>
+                                                    <div class="ta-record">
+                                                        <div class="ta-timestamp"><strong>Apr 05 2019</strong>  </div>
+                                                        <div class="ta-activity">Paid Part Payment Second Semester School Fee <a href="#">View Receipt</a>  </div>
+                                                    </div>
+                                                    <div class="ta-record">
+                                                        <div class="ta-timestamp"><strong>Aug 09 2019</strong> pm</div>
+                                                        <div class="ta-activity">Completed 200Level Session Tuition Fee <a href="#"> View/Download Receipt</a> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="timed-activity">
+                                                <div class="ta-date"><span> Course Registration  </span></div>
+                                                <div class="ta-record-w">
+                                                    <div class="ta-record">
+                                                        <div class="ta-timestamp"><strong> Completed Course Registration </strong> </div>
+                                                        <div class="ta-activity"> 2016/2017 Session <a href="#">View Course Submission </a> </div>
+                                                    </div>
+                                                    <div class="ta-record">
+                                                        <div class="ta-timestamp"><strong>  </strong> pm</div>
+                                                        <div class="ta-activity">2018/2019 Session <a href="#"> View Submitted Form </a> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-7">
+                                <div class="element-wrapper">
+                                    <div class="element-box">
+
+
+                                        <input type="hidden" name="id" th:value="${student.id}">
+                                        <div class="element-info">
+                                            <div class="element-info-with-icon">
+                                                <div class="element-info-icon">
+                                                    <div class="os-icon os-icon-pencil-2"></div>
+                                                </div>
+                                                <div class="element-info-text">
+                                                    <h5 class="element-inner-header">Edit Personal Information </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label> Marital Status</label>
+                                                    <select class="form-control" name="maritalStatus"  required>
+                                                        <option value="">Select</option>
+                                                        <option value="Single" th:selected="${student.maritalStatus} == 'Single'? true:false ">Single</option>
+                                                        <option value="Married" th:selected="${student.maritalStatus} == 'Married'? true:false ">Married</option>
+                                                    </select>
+                                                    <div class="help-block form-text with-errors form-control-feedback"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input class="form-control" name="email" th:value="${student.email}" placeholder="Enter Email" required="required" type="email">
+                                                    <div class="help-block form-text with-errors form-control-feedback"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label>Phone</label>
+                                                    <input class="form-control" name="phone" th:value="${student.phone}" data-match-error="Enter Phone Number" placeholder="Enter Phone Number" required="required" type="text">
+                                                    <div class="help-block form-text with-errors form-control-feedback"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label> Height (m)</label>
+                                                    <input type="text" class="form-control" name="height" placeholder="Enter Height" th:value="${student.height}" required>
+                                                    <div class="help-block form-text with-errors form-control-feedback"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label>Weight (kg)</label>
+                                                    <input class="form-control" name="weight" th:value="${student.weight}" data-match-error="Enter a valid email" placeholder="Enter Weight" required="required" type="text">
+                                                    <div class="help-block form-text with-errors form-control-feedback"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label>Country</label>
+                                                    <select name="country"  class="form-control" required>
+                                                        <option value="">Select</option>
+                                                        <option th:each="country : ${countries}" th:value="${country.id}"
+                                                                th:text="${country.description}"
+                                                                th:selected="${country.description == student.country}?true">Country</option>
+                                                    </select>
+
+                                                    <div class="help-block form-text with-errors form-control-feedback"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                            <div class="col-sm-4" th:if="${studentConfigMap.get('AllowStateChange') }">
+                                                <div class="form-group">
+                                                    <label> State</label>
+                                                    <select class="form-control" name="state" id="selState"  required >
+                                                        <option value="" th:attr="disabled=${studentConfigMap.get('AllowStateChange')?false:true }">Select</option>
+                                                        <option th:each="state : ${states}"
+                                                                th:attr="disabled=${studentConfigMap.get('AllowStateChange')?false:true }"
+                                                                th:value="${state.id}"
+                                                                th:text="${state.description}"
+                                                                th:selected="${state.description == student.state}?true">State</option>
+                                                    </select>
+                                                    <div class="help-block form-text with-errors form-control-feedback"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4" th:if="${studentConfigMap.get('AllowStateChange') }">
+                                                <div class="form-group">
+                                                    <label> LGA</label>
+
+                                                    <select class="form-control lga" id="lga" name="lga" >
+
+                                                        <option value="0">Select</option>
+                                                        <option th:each="lga : ${student.lgaList}"
+                                                                th:value="${lga.id}"
+                                                                th:text="${lga.description}"
+                                                                th:selected="${lga.description == student.lga}?true">Lga</option>
+
+                                                    </select>
+
+                                                    <div class="help-block form-text with-errors form-control-feedback"></div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label>Town/Village</label>
+                                                    <input class="form-control" name="town" th:value="${student.town}"  placeholder="Enter Town" required="required" type="text">
+                                                    <div class="help-block form-text with-errors form-control-feedback"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label> Facial Mark</label>
+                                                    <input class="form-control" name="facialMarks" th:value="${student.facialMarks}"  placeholder="Enter Yes/No " required="required" type="text">
+                                                    <div class="help-block form-text with-errors form-control-feedback"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label>Contact Address</label>
+                                                    <textarea name="contactAddress" th:text="${student.contactAddress}"  cols="30" rows="3" class="form-control"></textarea>
+                                                    <div class="help-block form-text with-errors form-control-feedback"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label>Postal Address</label>
+                                                    <textarea name="postalAddress" th:text="${student.postalAddress}" cols="30" rows="3" class="form-control"></textarea>
+                                                    <div class="help-block form-text with-errors form-control-feedback"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="element-info">
+                                            <div class="element-info-with-icon">
+                                                <div class="element-info-icon">
+                                                    <div class="os-icon os-icon-pencil-2"></div>
+                                                </div>
+                                                <div class="element-info-text">
+                                                    <h5 class="element-inner-header">Edit NOK/Guardian Information </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label> Guardian's Name</label>
+                                                    <input class="form-control" name="guardianFullName" th:value="${student.guardianFullName}" placeholder="Enter Guardian's Name" type="text" required >
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label> Guardian's Occupation</label>
+                                                    <input class="form-control" name="guardianOccupation" placeholder="Enter Guardian's Occupation" th:value="${student.guardianOccupation}" type="text" >
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label> Relationship With Guardian </label>
+                                                    <input class="form-control" name="guardianRelationship" placeholder="Enter Relationship With Guardian" th:value="${student.guardianRelationship}" type="text" >
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label class="text-sm"> Guardians Phone </label>
+                                                    <input class="form-control" name="guardianPhone" th:value="${student.guardianPhone}" placeholder="Guardians Phone Number" type="text" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label> Guardian's Address </label>
+                                                    <textarea name="guardianAddress" th:text="${student.guardianAddress}" cols="30" rows="3" class="form-control" required></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <div class="form-group">
+                                                    <label>Guardians Email </label>
+                                                    <input class="form-control" name="guardianEmail" th:value="${student.guardianEmail}" placeholder="Guardians Email " type="email" >
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="form-buttons-w"><button class="btn btn-primary" type="submit"> Update</button></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div layout:fragment="body_custom_script">
+    <script type="text/javascript" th:src="@{/assets/frontend/custom/js/StudentProfile/StudentProfileUpdate.js}"></script>
+
+    <script type="text/javascript" th:if="${success}" th:inline="javascript">showStackTopCenterAlert('success',  /*[[${success}]]*/ 'Success' ); </script>
+</div>
+
+</body>
+</html>

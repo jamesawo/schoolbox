@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{modules/backend/layouts/master}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title>PROGRAMME TYPE SETUP  </title>
+</head>
+<body>
+<div>
+    <ul layout:fragment="breadcrumbs" class="breadcrumb" >
+        <li class="breadcrumb-item"><a th:href="@{/SLMS/Dashboard}">Admin</a></li>
+        <li class="breadcrumb-item"><a href="#"> Institution Structure</a></li>
+        <li class="breadcrumb-item"><a th:href="@{/SLMS/InstitutionStructure/ProgrammeTypeSetup}"> Programme Type Setup</a></li>
+    </ul>
+</div>
+
+<div layout:fragment="content">
+
+    <div class="content-box">
+        <div class="element-wrapper">
+            <h6 class="element-header text-uppercase">PROGRAMME TYPE SETUP</h6>
+
+            <div class="element-box">
+
+                <div class="element-box-content">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label > Enter Parent Name </label>
+
+                            <div>
+                                <input type="text" id="txtParentDescription" class="form-control" placeholder="Search...">
+                            </div>
+
+                        </div>
+
+                        <div class="form-group col-md-4">
+
+                            <label > Select Category </label>
+
+                            <select name="" id="selCategory" class="form-control">
+                                <option value="">Select</option>
+                                <option value="1">Programme Category</option>
+                                <option value="2">Programme Type</option>
+                            </select>
+
+                            <form th:action="@{/SLMS/InstitutionStructure/ProgrammeTypeCSetup/}" method="post" id="frmGetProgrammeType" th:object="${programmeTypeDTO}">
+                                <input type="hidden" th:field="*{reportType}" id="txtCategoryValue">
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <button class="createModal btn btn-sm btn-primary" id="btnCreate"> Create  </button>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="content-panel-toggler"><i class="os-icon os-icon-grid-squares-22"></i><span>Sidebar</span></div>
+
+            <div class="content-i">
+                <div class="content-box">
+                    <div class="element-wrapper">
+                        <h6 class="element-header"></h6>
+                        <div class="element-box">
+                            <h5 class="form-header" th:text="${programmeTypeList}? 'PROGRAMME TYPE' : '' " > Programme Type Setup </h5>
+                            <h5 class="form-header" th:text="${programmeCategoryList}? 'PROGRAMME CATEGORY' : '' "> Programme Type Setup </h5>
+
+                            <div class="controls-above-table">
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="table table-lightborder" id="tblProgrammeCategoryDisplay">
+                                    <thead>
+                                    <tr class="text-left">
+
+                                        <th scope="col" th:if="${programmeTypeList}">Parent</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col-1">Code</th>
+                                        <th scope="col-2">Alias Description	</th>
+                                        <th scope="col-2">Merchant ID</th>
+                                        <th scope="col-2"> Certificate Obtained </th>
+                                        <th scope="col-1">  </th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <!--Programme Types -->
+                                    <tr class="text-left" th:if="${programmeTypeList}" th:each="pType : ${programmeTypeList}" >
+                                        <td th:text="${pType.institutionProgrammeCategory.description}">FULL TIME</td>
+                                        <td th:text="${pType.description}">FULL TIME HND</td>
+                                        <td th:text="${pType.code}">HND</td>
+                                        <td th:text="${pType.aliasDescription}">FULL TIME HND PROGRAMME	</td>
+                                        <td th:text="${pType.merchantId}">988092FT</td>
+                                        <td th:text="${pType.certificate}">HIGHER NATIONAL</td>
+
+                                        <td>
+                                            <button type="button"  class="editModal mb-xs mt-xs mr-xs modal-basic btn btn-primary"
+                                                    th:inline="text"
+                                                    data-toggle="modal"
+                                                    data-target="#editModal"
+                                                    th:attr="data-id=${pType.id},
+                                                    data-type=2,
+                                                    data-description=${pType.description},
+                                                    data-code=${pType.code},
+                                                    data-merchant=${pType.merchantId},
+                                                    data-certificate=${pType.certificate},
+                                                    data-parent=${pType.institutionProgrammeCategory.description},
+                                                    data-alias=${pType.aliasDescription}">
+                                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    <!--Programme Category -->
+
+                                    <tr class="text-left" th:if="${programmeCategoryList}"  th:each="pCategory : ${programmeCategoryList}">
+                                        <td th:text="${pCategory.description}">FULL TIME</td>
+                                        <td th:text="${pCategory.code}">FT</td>
+                                        <td th:text="${pCategory.aliasDescription}">FULL TIME PROGRAMME	</td>
+                                        <td>-</td>
+                                        <td>-</td>
+
+                                        <td>
+                                            <button type="button"  class="editModal mb-xs mt-xs mr-xs modal-basic btn btn-primary"
+                                                    th:inline="text"
+                                                    data-toggle="modal"
+                                                    data-target="#editModal"
+                                                    th:attr="data-id=${pCategory.id},
+                                                    data-type=1,
+                                                    data-description=${pCategory.description},
+                                                    data-code=${pCategory.code},
+                                                    data-alias=${pCategory.aliasDescription}">
+                                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <form  th:action="@{/SLMS/InstitutionStructure/ProgrammeTypeSetup/}" method="post"  th:object="${programmeTypeDTO}" >
+                <div aria-hidden="true" aria-labelledby="myLargeModalLabel" id="createModal" class="modal fade" role="dialog" tabindex="-1" data-backdrop="static" data-keyboard="false">
+                    <div class="modal-dialog modal-md">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">INSTITUTION STRUCTURE SETUP</h5>
+                                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"> &times;</span></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="row">
+
+                                    <div class="container">
+
+                                        <div class="form-group mt-lg col-lg-12">
+                                            <label for="selProgrammeCategory">Programme Category</label>
+                                            <select name="" id="selProgrammeCategory" class="form-control" th:field="*{institutionProgrammeCategoryId}">
+                                                <option value="0">Select...</option>
+                                                <option th:each="category: ${programmeCategories}"
+                                                        th:value="${category.id}" th:text="${category.description}"
+                                                        th:attr="data-id=${category.id},data-description=${category.description}"/>
+
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group mt-lg col-lg-12" id="divProgrammeType">
+                                            <label for="selProgrammeCategory">Programme Type</label>
+                                            <select name="" id="selProgrammeTypes" class="form-control" th:field="*{id}">
+                                                <option value="0">Select...</option>
+                                            </select>
+                                        </div>
+
+
+
+                                        <div class="form-group mt-lg col-lg-12">
+                                            <label for="txtDescription" >Description</label>
+                                            <input type="text" id="txtDescription" th:field="*{description}"  class="form-control" value=""  />
+                                        </div>
+                                        <div class="form-group mt-lg col-lg-12">
+                                            <label for="txtCode" >Code</label>
+                                            <input type="text" id="txtCode" th:field="*{code}"  class="form-control" value=""  />
+                                        </div>
+                                        <div class="form-group mt-lg col-lg-12">
+                                            <label for="txtAliasDescription" >Alias Description</label>
+                                            <input type="text" id="txtAliasDescription"  th:field="*{aliasDescription}"  class="form-control" value=""  />
+                                        </div>
+                                        <div class="form-group mt-lg col-lg-12">
+                                            <label for="txtMerchantId" >Merchant ID</label>
+                                            <input type="text" id="txtMerchantId" th:field="*{merchantId}"  class="form-control" value=""  />
+                                        </div>
+                                        <div class="form-group mt-lg col-lg-12">
+                                            <label for="txtCertificate" >Certificate</label>
+                                            <input type="text" id="txtCertificate" th:field="*{certificate}"  class="form-control" value=""  />
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" data-dismiss="modal" type="button"> Close</button>
+                                <button class="btn btn-primary" type="submit"> Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <form  th:action="@{/SLMS/InstitutionStructure/ProgrammeType/Edit}" method="post"  th:object="${programmeTypeDTO}" >
+                <div aria-hidden="true" aria-labelledby="myLargeModalLabel" id="editModal" class="modal fade" role="dialog" tabindex="-1" data-backdrop="static" data-keyboard="false">
+                    <div class="modal-dialog modal-md">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editExampleModalLabel">INSTITUTION STRUCTURE SETUP</h5>
+                                <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"> &times;</span></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="row">
+                                    <div class="container">
+
+                                        <input type="hidden" th:field="*{id}" id="txtEditId">
+                                        <input type="hidden" th:field="*{reportType}" id="txtType">
+
+                                        <div id="divGroup">
+
+                                        <div class="form-group form-check mt-lg col-lg-12" style="margin-left: 1em">
+                                            <input class="form-check-input" type="checkbox" value="" id="chkEditParentCategory">
+                                            <label class="form-check-label" for="chkEditParentCategory"  >
+                                                Click To Edit Parent Category
+                                            </label>
+                                        </div>
+
+                                        <div class="form-group mt-lg col-lg-12" id="divEditProgrammeCategory">
+                                            <label for="selEditProgrammeCategory">Programme Category</label>
+                                            <select name="" id="selEditProgrammeCategory" class="form-control" >
+                                                <option value="0" >Select...</option>
+                                                <option th:each="category: ${programmeCategories}"
+                                                        th:value="${category.id}" th:text="${category.description}"
+                                                        th:attr="data-id=${category.id},data-description=${category.description}"/>
+
+                                            </select>
+                                        </div>
+
+
+                                        <div class="form-group mt-lg col-lg-12">
+                                            <label for="txtEditParentCategory" >Parent Description</label>
+                                            <input type="text" id="txtEditParentCategory"  class="form-control" value=""  disabled />
+                                            <input type="hidden" id="txtEditParentCategoryValue" th:field="*{institutionProgrammeCategoryId}" >
+                                        </div>
+
+                                        </div>
+
+                                        <div class="form-group mt-lg col-lg-12">
+                                            <label for="txtEditDescription" >Description</label>
+                                            <input type="text" id="txtEditDescription" th:field="*{description}"  class="form-control" value=""  />
+                                        </div>
+
+                                        <div class="form-group mt-lg col-lg-12">
+                                            <label for="txtEditCode" >Code</label>
+                                            <input type="text" id="txtEditCode" th:field="*{code}"  class="form-control" value=""  />
+                                        </div>
+                                        <div class="form-group mt-lg col-lg-12">
+                                            <label for="txtEditAliasDescription" >Alias Description</label>
+                                            <input type="text" id="txtEditAliasDescription"  th:field="*{aliasDescription}"  class="form-control" value=""  />
+                                        </div>
+                                        <div class="form-group mt-lg col-lg-12">
+                                            <label for="txtEditMerchantId" >Merchant ID</label>
+                                            <input type="text" id="txtEditMerchantId" th:field="*{merchantId}"  class="form-control" value=""  />
+                                        </div>
+                                        <div class="form-group mt-lg col-lg-12">
+                                            <label for="txtEditCertificate" >Certificate</label>
+                                            <input type="text" id="txtEditCertificate" th:field="*{certificate}"  class="form-control" value=""  />
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" data-dismiss="modal" type="button"> Close</button>
+                                <button class="btn btn-primary" type="submit"> Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div layout:fragment="body_custom_script">
+
+    <script type="text/javascript" th:src="@{/assets/backend/custom/js/InstitutionStructure_Js/ProgrammeType.js}"></script>
+    <script type="text/javascript" th:if="${message}" th:inline="javascript">
+        PNotify.alert({
+            text: /*[[${message}]]*/ 'Success',
+            type: 'success'
+        });
+    </script>
+
+</div>
+
+</body>
+</html>

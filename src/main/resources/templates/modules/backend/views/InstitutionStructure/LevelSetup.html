@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{modules/backend/layouts/master}"
+      xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+
+    <title>LEVEL SETUP  </title>
+</head>
+<body>
+<div>
+    <ul layout:fragment="breadcrumbs" class="breadcrumb" >
+        <li class="breadcrumb-item"><a th:href="@{/SLMS/Dashboard}">Admin</a></li>
+        <li class="breadcrumb-item"><a href="#"> Institution Structure</a></li>
+        <li class="breadcrumb-item"><a th:href="@{/SLMS/InstitutionStructure/LevelSetup}"> Level Setup</a></li>
+    </ul>
+</div>
+
+<div layout:fragment="content">
+
+    <div class="content-box">
+        <div class="element-wrapper">
+            <h6 class="element-header text-uppercase">LEVEL SETUP</h6>
+
+            <div class="element-box">
+
+                <div class="element-box-content">
+                    <form th:action="@{/SLMS/InstitutionStructure/LevelSetup}" method="post" th:object="${levelDTO}">
+
+                        <div class="row">
+
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label > Description </label>
+                                    <input type="text" id="txtLevelDescription" th:field="*{description}"  class="form-control col" placeholder="" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label > Alternative Description </label>
+                                    <input type="text" id="txtLevelAltDescription" th:field="*{alternativeDescription}" class="form-control col" placeholder="" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="form-group">
+                                    <label > Hierarchy </label>
+                                    <input type="number" id="txtLevelHierarchy" th:field="*{hierarchy}" class="form-control col" min="1" max="4" required>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-sm btn-primary" id="btnAddLevel"> Add  <i class="fa fa-plus " aria-hidden="true"></i> </button>
+                        </div>
+
+                    </form>
+
+
+
+<!--                    <form th:action="@{/Admin/InstitutionStructure/CategoryNameSetup}" method="post" th:object="${levelDTO}">-->
+
+<!--                        <div class="row" style="display: none" id="divAddCategoryName">-->
+<!--                            <div class="table-responsive table col-6">-->
+<!--                                <table class="table-bordered table-striped table" id="tblAddCategoryName">-->
+<!--                                    <thead>-->
+<!--                                    <tr>-->
+<!--                                        <th scope="col-8">Category Names</th>-->
+<!--                                        <th scope="col-2"></th>-->
+<!--                                    </tr>-->
+<!--                                    </thead>-->
+<!--                                    <tbody>-->
+
+<!--                                    </tbody>-->
+<!--                                </table>-->
+
+<!--                            </div>-->
+
+
+<!--                            <div class="col">-->
+<!--                                <button type="submit" class="btn btn-md btn-primary" > Save  <i class="fa fa-download" aria-hidden="true"></i> </button>-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+<!--                    </form>-->
+
+
+
+                </div>
+            </div>
+
+
+
+
+
+            <div class="content-panel-toggler"><i class="os-icon os-icon-grid-squares-22"></i><span>Sidebar</span></div>
+
+            <div class="content-i">
+                <div class="content-box">
+                    <div class="element-wrapper">
+                        <h6 class="element-header"></h6>
+                        <div class="element-box">
+                            <h5 class="form-header">Institution Category</h5>
+                            <div class="controls-above-table">
+                                <div class="row">
+                                    <div class="col-sm-6"><a class="btn btn-sm btn-secondary" href="#">Export</a></div>
+                                    <div class="col-sm-6">
+                                        <form class="form-inline justify-content-sm-end"><input class="form-control form-control-sm rounded bright" placeholder="Search" type="text"></form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-lightborder">
+                                    <thead>
+                                    <tr class="text-left">
+                                        <th scope="col-8" >Description</th>
+                                        <th scope="col-8" >Alternative Description</th>
+                                        <th scope="col-2" >Hierarchy</th>
+                                        <th scope="col-2" ></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    <tr th:if="${institutionLevels.empty}">
+                                        <td> No Record Yet.</td>
+                                    </tr>
+
+                                    <tr class="text-left" th:each=" level :  ${institutionLevels}">
+                                        <td th:text="${level.description}">1</td>
+                                        <td th:text="${level.alternative}">100 Level</td>
+                                        <td th:text="${level.hierarchy}">1</td>
+                                        <td>
+                                            <button type="button"  class="edit-modal mb-xs mt-xs mr-xs modal-basic btn btn-primary"
+                                                    th:inline="text"
+                                                    data-toggle="modal"
+                                                    data-target="#editModal"
+                                                    th:attr="data-id=${level.id},data-description=${level.description},data-alternative=${level.alternative},data-hierarchy=${level.hierarchy}">
+
+                                                <i class="fa fa-pencil" aria-hidden="true"></i>
+
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div layout:fragment="body_modal">
+
+        <form th:action="@{/SLMS/InstitutionStructure/LevelSetup/Edit}" method="post" th:object="${levelDTO}">
+            <div aria-hidden="true" aria-labelledby="myLargeModalLabel" id="editModal" class="modal fade" role="dialog" tabindex="-1" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">LEVEL SETUP </h5>
+                            <button aria-label="Close" class="close" data-dismiss="modal" type="button"><span aria-hidden="true"> &times;</span></button>
+                        </div>
+                        <div class="modal-body">
+
+
+                            <div class="row">
+                                <div class="form-group mt-lg col-lg-4">
+                                    <label for="txtDescription">Level Description</label>
+                                    <input type="text" id="txtDescription" th:field="*{description}" class="form-control" value="" required/>
+                                </div>
+                                <div class="form-group mt-lg col-lg-4">
+                                    <label for="txtAlternative">Level Alt. Description</label>
+                                    <input type="text" id="txtAlternative" th:field="*{alternativeDescription}" class="form-control" value="" required/>
+                                </div>
+                                <div class="form-group mt-lg col-lg-4">
+                                    <label for="txtHierarchy" >Level Hierarchy</label>
+                                    <input type="number" id="txtHierarchy" th:field="*{hierarchy}"  class="form-control" value="" min="1"  />
+                                </div>
+                                <input type="hidden" id="txtId" th:field="*{id}" value="">
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-dismiss="modal" type="button"> Close</button>
+                            <button class="btn btn-primary" type="submit"> Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</div>
+
+<div layout:fragment="body_custom_script">
+
+    <script type="text/javascript" th:src="@{/assets/backend/custom/js/InstitutionStructure_Js/InstitutionLevelSetup.js}"></script>
+    <script type="text/javascript" th:if="${message}" th:inline="javascript">
+        PNotify.alert({
+            text: /*[[${message}]]*/ 'Success',
+            type: 'success'
+        });
+    </script>
+
+</div>
+
+</body>
+</html>
