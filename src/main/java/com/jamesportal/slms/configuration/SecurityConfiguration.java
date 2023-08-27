@@ -31,6 +31,7 @@ import javax.sql.DataSource;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     public static String[] WHITE_LIST = {
+            "**/.eot", "**/.ttf", "**/.woff",
             "/assets/**", "/webjars/**", "**/.css", "**/.js", "**/.png"
     };
 

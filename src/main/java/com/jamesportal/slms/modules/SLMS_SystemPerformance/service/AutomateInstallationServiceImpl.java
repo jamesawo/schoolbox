@@ -376,7 +376,7 @@ public class AutomateInstallationServiceImpl implements IAutomateInstallationSer
         if (roleSuperAdmin != null) {
             roleList.add(roleSuperAdmin);
             User user = userRepository.findByUsername(username);
-            if (user != null) {
+            if (user != null && user.getRoles().isEmpty()) {
                 user.setRoles(roleList);
                 userRepository.save(user);
                 System.out.println("---- role attached to user ----");
