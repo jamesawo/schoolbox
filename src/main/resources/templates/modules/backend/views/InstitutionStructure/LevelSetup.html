@@ -3,7 +3,6 @@
       xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{modules/backend/layouts/master}"
       xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-
     <title>LEVEL SETUP  </title>
 </head>
 <body>
@@ -52,46 +51,10 @@
                         <div class="form-group">
                             <button class="btn btn-sm btn-primary" id="btnAddLevel"> Add  <i class="fa fa-plus " aria-hidden="true"></i> </button>
                         </div>
-
                     </form>
-
-
-
-<!--                    <form th:action="@{/Admin/InstitutionStructure/CategoryNameSetup}" method="post" th:object="${levelDTO}">-->
-
-<!--                        <div class="row" style="display: none" id="divAddCategoryName">-->
-<!--                            <div class="table-responsive table col-6">-->
-<!--                                <table class="table-bordered table-striped table" id="tblAddCategoryName">-->
-<!--                                    <thead>-->
-<!--                                    <tr>-->
-<!--                                        <th scope="col-8">Category Names</th>-->
-<!--                                        <th scope="col-2"></th>-->
-<!--                                    </tr>-->
-<!--                                    </thead>-->
-<!--                                    <tbody>-->
-
-<!--                                    </tbody>-->
-<!--                                </table>-->
-
-<!--                            </div>-->
-
-
-<!--                            <div class="col">-->
-<!--                                <button type="submit" class="btn btn-md btn-primary" > Save  <i class="fa fa-download" aria-hidden="true"></i> </button>-->
-<!--                            </div>-->
-
-<!--                        </div>-->
-
-<!--                    </form>-->
-
-
 
                 </div>
             </div>
-
-
-
-
 
             <div class="content-panel-toggler"><i class="os-icon os-icon-grid-squares-22"></i><span>Sidebar</span></div>
 
@@ -149,8 +112,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 
@@ -204,11 +165,10 @@
     <script type="text/javascript" th:src="@{/assets/backend/custom/js/InstitutionStructure_Js/InstitutionLevelSetup.js}"></script>
     <script type="text/javascript" th:if="${message}" th:inline="javascript">
         PNotify.alert({
-            text: /*[[${message}]]*/ 'Success',
+            text: 'Success',
             type: 'success'
         });
     </script>
-
 </div>
 
 </body>
