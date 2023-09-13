@@ -5,15 +5,41 @@
 
 
 ## Project Overview
-Schoolbox showcases the potential of technology to uplift local educational institutions. It's a comprehensive college management system crafted for all types of schools, from secondary to university levels. Using Java, Spring Boot, Thymeleaf, jQuery, Ajax, and Postgres, Schoolbox simplifies vital tasks like student applications, enrollment, course sign-ups, fees, grades, staff management, and more. This project aims to offer a user-friendly solution for educators, students, and administrators in our community, enhancing education quality and administration efficiency.
+Schoolbox showcases the potential of technology to uplift local educational institutions.
+It's a comprehensive student lifecycle management system crafted for all types of schools, from secondary to university levels. 
 
-My goal is to provide user-friendly, effective, and innovative tools that empower educators, administrators, students, and parents to collaborate seamlessly, thus enriching the educational experience.
+My goal is to provide a user-friendly, effective, and innovative tool that empower educators, administrators, students, and parents to 
+collaborate seamlessly, thus enriching the educational experience.
 
-By leveraging SchoolBox, you can effortlessly handle tasks such as student enrollment/registration, course management, fee management, attendance tracking, result management, and many more – all consolidated within a single, integrated system. My passion is to revolutionize education management for small businesses, offering a solution that's tailored to the needs of various educational establishments within my local community.
+By leveraging SchoolBox, you can effortlessly handle tasks such as student enrollment/registration, course management, fee management, 
+attendance tracking, result management, and many more – all consolidated within a single, integrated system. My passion is to revolutionize 
+education management for educational institutions, offering a solution that's tailored to the needs of various educational establishments within my local community.
 
 
 ## Motivation
-The genesis of Schoolbox arose from a simple thought: how can technology be harnessed to help local education? As a software engineer, my focus has been on crafting solutions that empower small/medium size businesses within my community. The motivation behind Schoolbox is driven by the aspiration to equip educational institutions—ranging from secondary schools to universities—with a resilient and adaptable management system. This project seeks to contribute to the growth of local enterprises by offering a tool that streamlines operations, minimizes complexities, and enhances the quality of education without imposing heavy financial constraints.
+Schoolbox arose from a simple thought: how can technology be harnessed to help local education? 
+As a software engineer, my focus has been on crafting solutions that empower small/medium size businesses within my community. 
+The motivation behind Schoolbox is driven by the aspiration to equip educational institutions—ranging from secondary schools to universities 
+with a resilient and adaptable student lifecycle management system. 
+This project seeks to contribute to the growth of local enterprises by offering a tool that streamlines operations, 
+minimizes complexities, and enhances the quality of education.
+
+## Screenshots 
+
+- Student Facing Landing/Screen (Student Facing)
+<div align="center">
+<img src="screens/01-student-facing.png" width="50%">
+</div>
+
+- Student Management View (Admin Facing)
+<div align="center">
+<img src="screens/02-student-management.png" width="50%">
+</div>
+
+- Institution Setup (Admin Facing)
+<div align="center">
+<img src="screens/03-institution-setup.png" width="50%">
+</div>
 
 ## Features
 
@@ -34,7 +60,12 @@ The genesis of Schoolbox arose from a simple thought: how can technology be harn
 
 Schoolbox has been built using a selection of powerful tools and technologies:
 
-![Java](https://img.shields.io/badge/Java-%3E%3D%2011-blue) ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-%3E%3D%202.5.0-brightgreen) ![Thymeleaf](https://img.shields.io/badge/Thymeleaf-%3E%3D%203.0.0-yellowgreen) ![jQuery](https://img.shields.io/badge/jQuery-%3E%3D%203.6.0-blue) ![Postgres](https://img.shields.io/badge/Postgres-%3E%3D%2013.0-blue) ![Bootstrap](https://img.shields.io/badge/Bootstrap-%3E%3D%203.5.0-purple)
+![Java](https://img.shields.io/badge/Java-%3E%3D%2011-blue) 
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-%3E%3D%202.5.0-brightgreen) 
+![Thymeleaf](https://img.shields.io/badge/Thymeleaf-%3E%3D%203.0.0-yellowgreen) 
+![jQuery](https://img.shields.io/badge/jQuery-%3E%3D%203.6.0-blue) 
+![Postgres](https://img.shields.io/badge/Postgres-%3E%3D%2013.0-blue) 
+![Bootstrap](https://img.shields.io/badge/Bootstrap-%3E%3D%203.5.0-purple)
 
 
 These tools collectively contribute to the functionality, reliability, and user experience of Schoolbox.
@@ -68,15 +99,19 @@ To get Schoolbox up and running on your local machine, follow these steps:
 
 6. **Access the Application:** Once the application is running, open your web browser and go to `http://localhost:8080`.
 
-With these steps, Schoolbox will be running locally on your machine. Feel free to explore its features and functionalities. If you have any questions or encounter any issues, refer to the documentation on my website [jamesaworo.com](https://jamesaworo.com) or reach out for assistance.
+With these steps, Schoolbox will be running locally on your machine. Feel free to explore its features and functionalities. 
+If you have any questions or encounter any issues, refer to the documentation on my website [jamesaworo.com](https://jamesaworo.com) or reach out for assistance.
 
 ## Author
 
 Schoolbox is developed and maintained by **James Aworo**.
 
-For questions, feedback, or collaborations, feel free to reach out via email at [james.aworo@outlook.com](mailto:james.aworo@outlook.com).
+For questions, feedback, or collaborations, feel free to reach out to me.
 
-Connect with me on [LinkedIn](https://www.linkedin.com/#) and follow me on [GitHub](https://github.com/jamesawo) to stay updated on my projects [more projects...](https://jamesaworo.com).
+### Connect with me 
+- Email:  [james.aworo@outlook.com](mailto:james.aworo@outlook.com)
+- Github [GitHub](https://github.com/jamesawo) 
+- Checkout more projects on [my website](https://jamesaworo.com).
 
 
 ## License
