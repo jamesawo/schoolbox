@@ -110,7 +110,7 @@ For questions, feedback, or collaborations, feel free to reach out to me.
 
 ### Connect with me 
 - Email:  [james.aworo@outlook.com](mailto:james.aworo@outlook.com)
-- Github [GitHub](https://github.com/jamesawo) 
+- Github [jaworo](https://github.com/jamesawo) 
 - Checkout more projects on [my website](https://jamesaworo.com).
 
 
