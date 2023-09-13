@@ -26,6 +26,8 @@ minimizes complexities, and enhances the quality of education.
 
 ## Screenshots 
 
+**See a Live Demo Here [schoolbox.jamesaworo.com](https://schoolbox.jamesaworo.com)**
+
 - Student Facing Landing/Screen (Student Facing)
 <div align="center">
 <img src="screens/01-student-facing.png" width="50%">
