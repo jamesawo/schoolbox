@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title> Login - College Portal</title>
+    <title> Login - Student Portal</title>
     <meta charset="utf-8">
     <meta content="ie=edge" http-equiv="x-ua-compatible">
     <meta content="template language" name="keywords">
@@ -32,6 +32,8 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" th:href="@{/assets/common/login/css/util.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/assets/common/login/css/main.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
 </head>
 
@@ -41,12 +43,12 @@
     <div class="container-login100">
         <div class="wrap-login100 p-l-85 p-r-85 p-t-55 p-b-55">
             <span class="login100-form-title p-b-20">
-                Portal Login
+               Student Portal Login
             </span>
             <span th:if="${param.error}" style="color: red">Invalid Login Details!</span>
             <form class="login100-form validate-form flex-sb flex-w" th:action="@{/login}" method="post">
                 <span class="txt1 p-b-11">
-						Username / Matric Number
+						Username / Registration Number
 					</span>
                 <div class="wrap-input100 validate-input m-b-36" data-validate = "Username is required">
                     <input class="input100" type="text" name="email" id="email" >
