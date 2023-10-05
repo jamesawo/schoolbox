@@ -18,7 +18,7 @@ education management for educational institutions, offering a solution that's ta
 
 ## Motivation
 Schoolbox arose from a simple thought: how can technology be harnessed to help local education? 
-As a software engineer, my focus has been on crafting solutions that empower small/medium size businesses within my community. 
+As a software engineer, my focus has been on crafting solutions that empower all-size businesses within my community. 
 The motivation behind Schoolbox is driven by the aspiration to equip educational institutions—ranging from secondary schools to universities 
 with a resilient and adaptable student lifecycle management system. 
 This project seeks to contribute to the growth of local enterprises by offering a tool that streamlines operations, 
